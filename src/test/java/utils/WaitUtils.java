@@ -1,5 +1,7 @@
 package utils;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.function.Function;
 
@@ -12,7 +14,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUtils {
 	
-	public static void explicitWait(WebDriver driver, WebElement elementToWait) {
+	public static void waitForTitleToBe(WebDriver driver, String elementToWait) throws FileNotFoundException, IOException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.titleIs(FileUtils.readHomepagePropertiesFile("homePageTitle")));
+	}
+	public static void explicitWaitForElementsVisibility(WebDriver driver, WebElement elementToWait) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(elementToWait));
 	}

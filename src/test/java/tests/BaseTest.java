@@ -25,13 +25,13 @@ public class BaseTest {
 	@BeforeMethod(alwaysRun = true)
 	public void setup() throws FileNotFoundException, IOException {
 		driver = new ChromeDriver();
-		getAppURL();
+		getAppURL();		
 		lp = new LoginPage(driver);
 		hp = new HomePage(driver);
 	}
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		driver.close();
+//		driver.close();
 	}
 	
 }

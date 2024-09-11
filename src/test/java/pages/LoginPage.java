@@ -149,8 +149,8 @@ public class LoginPage extends BasePage{
 		}
 		return isPasswordResetPage;
 	}
-	public boolean isErrorMsgDisplayed() {
-		if(errorMessage.isDisplayed()) {
+	public boolean isErrorMsgDisplayed() throws FileNotFoundException, IOException {
+		if(errorMessage.isDisplayed() ) {
 			return true;
 		}else {
 			return false;

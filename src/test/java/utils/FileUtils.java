@@ -19,4 +19,9 @@ public class FileUtils {
 		p.load(new FileReader(FileConstants.HOMEPAGE_TEST_DATA_FILE_PATH));
 		return p.getProperty(key);
 	}
+	public static String readMyProfilePropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.MYPROFILE_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
 }

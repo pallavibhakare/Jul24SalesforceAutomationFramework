@@ -46,9 +46,7 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "//div[@id='userNav-menuItems']/a[contains(text(), 'Logout')]")
 	public WebElement logoutLink;
 
-	@FindBy(xpath = "//div[@class='editPen']/a[@class='contactInfoLaunch editLink']/img[@title='Edit Profile']")
-	public WebElement editPen;
-	
+
 	public String getUserName(WebDriver driver) {
 		return usersNavLabel.getText();
 	}
@@ -69,9 +67,7 @@ public class HomePage extends BasePage {
 		}
 		return optionNames;
 	}
-	public void clickMyProfile() {
-		myProfile.click();		
-	}
+	
 	
 	/**This function will verify user menu options
 	 * @return boolean true if all options are verified
@@ -106,18 +102,7 @@ public class HomePage extends BasePage {
 		}
 		
 	}
-	public boolean isMyProfilePage(WebDriver driver) {
-		boolean isMyprofilePage = false;
-		String expectedTitle = "User: "+getUserName(driver)+" ~ Salesforce - Developer Edition";
-		String actualTitle =  driver.getTitle();
-		if(actualTitle.equals(expectedTitle)) {
-			isMyprofilePage = true;
-		}else {
-			isMyprofilePage = false;
-		}
-		return isMyprofilePage;
-	}
-	public void clickEditProfileBtn() {
-		editPen.click();		
-	}
+	
+	
+	
 }

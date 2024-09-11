@@ -6,9 +6,8 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
 import utils.FileUtils;
+import utils.WaitUtils;
 
 public class LoginPage extends BasePage{
 	
@@ -26,23 +25,68 @@ public class LoginPage extends BasePage{
 	@FindBy(id = "password")
 	public WebElement user_password;
 	
-	@FindBy(id = "forget_password_link")
+	@FindBy(id = "login_form")
+	public WebElement login_form;
+	
+	@FindBy(id = "forgot_password_link")
 	public WebElement forgetPassword;
 	
 	@FindBy(name = "rememberUn")
 	public WebElement rememberMe;
 	
-	@FindBy(id = "hint_back_chooser")
+	@FindBy(id = "idcard-identity")
 	public WebElement savedUserName;
 	
 	@FindBy(id = "error")
 	public WebElement errorMessage;
 	
-	public void enterUsername(String username) {
-		this.userName.sendKeys(username);		
+	@FindBy(xpath = "//input[@id='un']")
+	public WebElement UserNameForForgetPassword;
+	
+	@FindBy(id = "continue")
+	public WebElement continueBtn;
+		
+	@FindBy(xpath = "//div[@id='forgotPassForm']/div[@class='message']/p[1]")
+	public WebElement passwordResetMsg;
+	
+	public void enterUsername() throws FileNotFoundException, IOException {
+		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("valid.username"));		
 	}
-	public void enterPassword(String passWord) {
-		this.user_password.sendKeys(passWord);		
+	public void enterWrongUsername() throws FileNotFoundException, IOException {
+		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("wrong.username"));		
+	}
+	public boolean isUserNameEntered() {
+		boolean usernameEntered = false;
+		if(userName.getCssValue("value") != null) {
+			usernameEntered = true;
+		}else {
+			usernameEntered = false;
+		}
+		return usernameEntered;
+	}
+	public boolean isPasswordEntered() {
+		boolean passwordEntered = false;
+		if(user_password.getCssValue("value") != null) {
+			passwordEntered = true;
+		}else {
+			passwordEntered = false;
+		}
+		return passwordEntered;
+	}
+	
+	public boolean isSavedUserName() {
+		boolean displayed = true;
+		if(!savedUserName.isDisplayed()) {
+			displayed = false;
+		}
+		return displayed;
+	}
+	
+	public void enterPassword() throws FileNotFoundException, IOException {
+		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("valid.password"));		
+	}
+	public void enterWrongPassword() throws FileNotFoundException, IOException {
+		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("wrong.password"));		
 	}
 	public void clickLogin() {
 		this.loginButton.click();		
@@ -50,10 +94,67 @@ public class LoginPage extends BasePage{
 	public String getErrorMessage() {		
 		return errorMessage.getText();
 	}
-	public HomePage loginToApp(WebDriver driver) throws FileNotFoundException, IOException{
-		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("valid.username"));
-		this.enterPassword(FileUtils.readLoginPropertiesFile("valid.password"));
+	public boolean isLoginPage(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isALoginPage = true;
+		WaitUtils.fluentlyWaitForLoginPageTitle(driver, driver.getTitle());
+		if(!driver.getTitle().equals(FileUtils.readLoginPropertiesFile("loginPageTitle"))) {
+			isALoginPage = false;
+		}else {
+			isALoginPage = true;
+		}
+		return isALoginPage;
+	}
+	public void clickRememberMe() {
+		rememberMe.click();
+	}
+	public boolean isRememberMeChecked(WebDriver driver) {
+		boolean rememberMeChecked = false;
+		WaitUtils.explicitWaitForElementsVisibility(driver, rememberMe);
+		if(rememberMe.isSelected()) {			
+			rememberMeChecked = true;
+		}else {
+			rememberMeChecked = false;
+		}
+		return rememberMeChecked;
+	}
+	
+	public HomePage loginToApp(WebDriver driver) throws FileNotFoundException, IOException{		
+		enterUsername();
+		enterPassword();		
 		this.clickLogin();
 		return new HomePage(driver);
+	}
+	public void forgetPassword(WebDriver driver) {
+		forgetPassword.click();		
+	}
+	public boolean isForgetPasswordPage(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isForgetPasswordPage = true;
+		if(!driver.getTitle().equals(FileUtils.readLoginPropertiesFile("forgetPasswordPageTitle"))) {
+			isForgetPasswordPage = false;
+		}
+		return isForgetPasswordPage;
+	}
+	public void forgotYourPassword(WebDriver driver) throws FileNotFoundException, IOException {
+		
+		UserNameForForgetPassword.sendKeys(FileUtils.readLoginPropertiesFile("UserNameForForgetPassword"));
+		continueBtn.click();
+	}
+	public boolean isResetMessagePage(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isPasswordResetPage = false;
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		if(driver.getTitle().equals(FileUtils.readLoginPropertiesFile("emailSentPageTitle")) ) {
+			isPasswordResetPage = true;
+		}else {
+			isPasswordResetPage = false;
+		}
+		return isPasswordResetPage;
+	}
+	public boolean isErrorMsgDisplayed() {
+		if(errorMessage.isDisplayed()) {
+			return true;
+		}else {
+			return false;
+		}
+		
 	}
 }

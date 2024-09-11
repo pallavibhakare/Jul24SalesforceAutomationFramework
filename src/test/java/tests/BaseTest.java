@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MyProfilePage;
 import utils.FileUtils;
 
 public class BaseTest {
@@ -17,6 +18,7 @@ public class BaseTest {
 	WebDriver driver = null;
 	LoginPage lp = null;
 	HomePage hp = null;
+	MyProfilePage mp = null;
 	
 	public void getAppURL() throws FileNotFoundException, IOException {
 		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));
@@ -28,7 +30,9 @@ public class BaseTest {
 		getAppURL();		
 		lp = new LoginPage(driver);
 		hp = new HomePage(driver);
+		mp = new MyProfilePage(driver);
 	}
+	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 //		driver.close();

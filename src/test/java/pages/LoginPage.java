@@ -50,9 +50,11 @@ public class LoginPage extends BasePage{
 	public WebElement passwordResetMsg;
 	
 	public void enterUsername() throws FileNotFoundException, IOException {
+		this.userName.clear();
 		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("valid.username"));		
 	}
 	public void enterWrongUsername() throws FileNotFoundException, IOException {
+		this.userName.clear();
 		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("wrong.username"));		
 	}
 	public boolean isUserNameEntered() {

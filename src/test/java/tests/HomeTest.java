@@ -3,25 +3,31 @@ package tests;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.LoginPage;
+import pages.MyProfilePage;
 import utils.FileUtils;
 
 
 public class HomeTest extends BaseTest{
+	
+	HomePage hp;
+	
+	
 	@BeforeMethod
 	public void login() throws FileNotFoundException, IOException {
-		getAppURL();
-		lp.loginToApp(driver);
-		hp = new HomePage(driver);
+		WebDriver driver = getDriver();	
+		LoginPage lp  = new LoginPage(driver);
+		hp = lp.loginToApp(driver);
 	}
 	
-//	@Test
+	@Test
 	public void selectUserMenuTC05() throws FileNotFoundException, IOException {
-//		getAppURL();
-//		lp.loginToApp(driver);
+		WebDriver driver = getDriver();
 		Assert.assertTrue(hp.isHomePage(driver), "Applications home page must be displayed with logged user Name "+hp.getUserName(driver));
 		Assert.assertTrue(hp.isUserMenuAvailable(), "User Menu drop down should be available.");
 		hp.clickUserMenu(driver);
@@ -30,8 +36,8 @@ public class HomeTest extends BaseTest{
 	
 	@Test
 	public void myProfileOptionTC06() throws FileNotFoundException, IOException {
-//		getAppURL();
-//		lp.loginToApp(driver);
+		WebDriver driver = getDriver();
+		MyProfilePage mp = new MyProfilePage(driver);
 		hp.clickUserMenu(driver);
 		Assert.assertTrue(hp.verifyUserMenuOptions(), "User Menu Options should be verified.");
 		mp.clickMyProfile();

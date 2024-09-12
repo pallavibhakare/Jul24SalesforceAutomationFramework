@@ -2,40 +2,87 @@ package tests;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-
-import pages.HomePage;
-import pages.LoginPage;
-import pages.MyProfilePage;
 import utils.FileUtils;
 
 public class BaseTest {
 
-	WebDriver driver = null;
-	LoginPage lp = null;
-	HomePage hp = null;
-	MyProfilePage mp = null;
-	
-	public void getAppURL() throws FileNotFoundException, IOException {
-		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));
+	private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+	public void setDriver(String browserName, boolean headless) {
+		WebDriver driver = getBrowser(browserName, false);
+		threadLocalDriver.set(driver);
+	}
+	public static WebDriver getDriver() {
+		return threadLocalDriver.get();
 	}
 	
+	public WebDriver getBrowser(String browserName, boolean headless) {
+		WebDriver driver = null;
+		browserName = browserName.toLowerCase();
+		switch (browserName) {
+		case "chrome":
+			if(headless) {
+				ChromeOptions co = new ChromeOptions();
+				co.addArguments("--headless");
+				driver = new ChromeDriver(co);
+			}else {
+				driver = new ChromeDriver();
+			}
+			break;
+		case "firefox":
+			if(headless) {
+				FirefoxOptions fo = new FirefoxOptions();
+				fo.addArguments("--headless");
+				driver = new FirefoxDriver(fo);
+			}else {
+				driver = new FirefoxDriver();
+			}
+			
+			break;
+		case "edge":
+			if(headless) {
+				EdgeOptions eo = new EdgeOptions();
+				eo.addArguments("--headless");
+				driver = new EdgeDriver(eo);
+			}else {
+				driver = new EdgeDriver();
+			}
+			break;
+		case "safari":
+			
+			//Safari does not support headless mode 
+			driver = new SafariDriver();
+			break;
+		default:
+			driver = null;
+			break;
+		}
+		return driver;
+	}
+		
 	@BeforeMethod(alwaysRun = true)
 	public void setup() throws FileNotFoundException, IOException {
-		driver = new ChromeDriver();
-		getAppURL();		
-		lp = new LoginPage(driver);
-		hp = new HomePage(driver);
-		mp = new MyProfilePage(driver);
+
+		setDriver("chrome", false);
+		WebDriver driver = getDriver();
+		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-//		driver.close();
+		getDriver().quit();
 	}
 	
 }

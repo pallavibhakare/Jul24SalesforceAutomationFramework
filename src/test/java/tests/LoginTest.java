@@ -2,21 +2,21 @@ package tests;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import pages.HomePage;
+import pages.LoginPage;
 import utils.CommonActionUtils;
 import utils.FileUtils;
 
 public class LoginTest extends BaseTest{
-//	@Test
+	@Test
 	public void loginErrMsgTC01() throws FileNotFoundException, IOException {
-//		driver = new ChromeDriver();
-//		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));
-//		lp = new LoginPage(driver);
-//		hp = new HomePage(driver);
-		//above 4 lines in @BeforeMethod and last driver.close(); in @AfterMethod
-		
-		//Repetitive code: is in @BeforeMethod like driver, url and global objects lp,hp etc
+		WebDriver driver = getDriver();
+		LoginPage lp = new LoginPage(driver);
 		String expectedUserName = FileUtils.readLoginPropertiesFile("valid.username");
 		lp.enterUsername();
 		String actualUserName = CommonActionUtils.getElementValueAttribute(lp.userName);
@@ -27,11 +27,15 @@ public class LoginTest extends BaseTest{
 		Assert.assertEquals("", actualPassword);
 		lp.clickLogin();
 		Assert.assertEquals(lp.getErrorMessage(), FileUtils.readLoginPropertiesFile("password_error_text"));
-//		driver.close(); //in @AfterMethod
+
 	}
 	
-//	@Test
+	@Test
 	public void loginToSalesfoceTC02() throws FileNotFoundException, IOException {		
+		
+		WebDriver driver = getDriver();
+		LoginPage lp = new LoginPage(driver);
+		HomePage hp = new HomePage(driver);
 		String expectedUserName = FileUtils.readLoginPropertiesFile("valid.username");
 		lp.enterUsername();
 		String actualUserName = CommonActionUtils.getElementValueAttribute(lp.userName);
@@ -45,15 +49,13 @@ public class LoginTest extends BaseTest{
 		Assert.assertTrue(hp.isHomePage(driver), "Home Page should be displayed.");
 	}
 	
-//	@Test
-//	public void loginToSalesforce() throws FileNotFoundException, IOException {
-//		HomePage hp = lp.loginToApp(driver);
-//		Assert.assertTrue(hp.isHomePage(driver), "Home Page should be displayed");
-//	}
+
 	
-//	@Test
+	@Test
 	public void checkRememberMeTC03() throws FileNotFoundException, IOException {
-		getAppURL();
+		WebDriver driver = getDriver();
+		LoginPage lp = new LoginPage(driver);
+		HomePage hp = new HomePage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "SFDC lgin page must be displayed.");
 		lp.enterUsername();
 		lp.enterPassword();
@@ -68,9 +70,10 @@ public class LoginTest extends BaseTest{
 		
 	}
 	
-//	@Test
+	@Test
 	public void forgetPasswordTC04A() throws FileNotFoundException, IOException {
-		getAppURL();
+		WebDriver driver = getDriver();
+		LoginPage lp = new LoginPage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login Page");
 		lp.forgetPassword(driver);
 		Assert.assertTrue(lp.isForgetPasswordPage(driver), "Verify Forget Password Page is displayed.");
@@ -80,7 +83,8 @@ public class LoginTest extends BaseTest{
 	
 	@Test
 	public void validateLoginErrorMessageTC04B() throws FileNotFoundException, IOException {
-		getAppURL();
+		WebDriver driver = getDriver();
+		LoginPage lp = new LoginPage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login Page should be displayed.");
 		lp.enterWrongUsername();
 		Assert.assertTrue(lp.isUserNameEntered(), "Verify "+FileUtils.readLoginPropertiesFile("wrong.username")+" is entered in username field.");

@@ -3,7 +3,9 @@
   <groupId>com.qa</groupId>
   <artifactId>SFDCFramework</artifactId>
    <version>0.0.1-SNAPSHOT</version>
-  
+  <properties>
+	  <log4jversion>2.18.0</log4jversion>
+  </properties>
   <dependencies>
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 	<dependency>
@@ -24,7 +26,23 @@
 	    <version>7.10.2</version>
 	    <!-- <scope>test</scope>   this will set scope only yo src/test/java folder, removing this will makes TestNG vaailable for all packages-->
 	</dependency>
-
+	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.1.2</version>
+	</dependency>
+	
+	<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4jversion}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4jversion}</version>
+		</dependency>
 
   </dependencies>
 </project>

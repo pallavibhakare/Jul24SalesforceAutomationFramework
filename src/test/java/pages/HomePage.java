@@ -1,6 +1,5 @@
 package pages;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,7 +42,15 @@ public class HomePage extends BasePage {
 	
 	@FindBy(xpath = "//div[@id='userNav-menuItems']/a[contains(text(), 'Logout')]")
 	public WebElement logoutLink;
-
+	
+	@FindBy(xpath = "//a[@class='setupSection']/span[contains(text(), 'My Settings')]")
+	public WebElement mySettingsSetupText;
+	
+	
+	
+	public void clickMySettings() {
+		mySettings.click();
+	}
 
 	public String getUserName(WebDriver driver) {
 		return usersNavLabel.getText();
@@ -65,7 +72,10 @@ public class HomePage extends BasePage {
 		}
 		return optionNames;
 	}
-	
+	public String getHomePageTitle(WebDriver driver) {
+		return driver.getTitle();
+		
+	}
 	
 	/**This function will verify user menu options
 	 * @return boolean true if all options are verified
@@ -100,7 +110,23 @@ public class HomePage extends BasePage {
 		}
 		
 	}
+
+	public boolean isMySettingsHomePage(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isMysettingsPage = false;
+		WaitUtils.explicitWaitForElementsVisibility(driver, mySettingsSetupText);		
+		if(mySettingsSetupText.isDisplayed()) {
+			isMysettingsPage = true;
+			System.out.println("User is on MySettings page");
+		}
+		else {
+			isMysettingsPage = false;
+			System.out.println("MySettings page is not Lunched");
+		}
+		return isMysettingsPage;
+	}
+
 	
-	
+		
+
 	
 }

@@ -51,11 +51,13 @@ public class LoginPage extends BasePage{
 	
 	public void enterUsername() throws FileNotFoundException, IOException {
 		this.userName.clear();
-		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("valid.username"));		
+		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("valid.username"));
+		logger.debug("Username is entered.");
 	}
 	public void enterWrongUsername() throws FileNotFoundException, IOException {
 		this.userName.clear();
 		this.userName.sendKeys(FileUtils.readLoginPropertiesFile("wrong.username"));		
+		logger.debug("Wrong username is entered.");
 	}
 	public boolean isUserNameEntered() {
 		boolean usernameEntered = false;
@@ -85,10 +87,13 @@ public class LoginPage extends BasePage{
 	}
 	
 	public void enterPassword() throws FileNotFoundException, IOException {
-		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("valid.password"));		
+		this.user_password.clear();
+		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("valid.password"));
+		logger.debug("Password is Entered.");
 	}
 	public void enterWrongPassword() throws FileNotFoundException, IOException {
-		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("wrong.password"));		
+		this.user_password.sendKeys(FileUtils.readLoginPropertiesFile("wrong.password"));
+		logger.debug("Wrong Password is Entered.");
 	}
 	public void clickLogin() {
 		this.loginButton.click();		
@@ -123,6 +128,13 @@ public class LoginPage extends BasePage{
 	public HomePage loginToApp(WebDriver driver) throws FileNotFoundException, IOException{		
 		enterUsername();
 		enterPassword();		
+		this.clickLogin();
+		return new HomePage(driver);
+	}
+	
+	public HomePage loginToApp(WebDriver driver, String uName, String pass) throws FileNotFoundException, IOException{		
+		userName.sendKeys(uName);
+		user_password.sendKeys(pass);		
 		this.clickLogin();
 		return new HomePage(driver);
 	}

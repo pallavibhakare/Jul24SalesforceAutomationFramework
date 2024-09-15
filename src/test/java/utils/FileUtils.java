@@ -24,4 +24,9 @@ public class FileUtils {
 		p.load(new FileReader(FileConstants.MYPROFILE_TEST_DATA_FILE_PATH));
 		return p.getProperty(key);
 	}
+	public static String readMySettingsPropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.MYSETTINGS_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
 }

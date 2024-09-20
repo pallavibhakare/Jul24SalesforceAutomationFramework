@@ -1,0 +1,10 @@
+2024-09-16-21:51:53 INFO  ExtentReports instance initialized successfully.
+2024-09-16-21:51:57 DEBUG Username is entered.
+2024-09-16-21:51:57 DEBUG Password is Entered.
+2024-09-16-21:51:58 INFO  'Login' button is clicked
+2024-09-16-21:52:00 INFO  'Accounts' link is clicked.
+2024-09-16-21:52:00 INFO  Accounts Page is displayed.
+2024-09-16-21:52:01 INFO  'Create New View' link is clicked.
+2024-09-16-21:52:01 INFO  'View Name' is entered.
+2024-09-16-21:52:01 INFO  'Unique View Name' is generated.
+2024-09-16-21:52:02 INFO  Saved Newly created view.

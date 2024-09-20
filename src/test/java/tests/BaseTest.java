@@ -30,7 +30,7 @@ import utils.ReportManager;
 public class BaseTest {
 
 	private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
-	ExtentReports extent;
+	public static ExtentReports extent;
 	public static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
 	public static Logger logger = LogManager.getLogger("BaseTest");
 	
@@ -89,19 +89,24 @@ public class BaseTest {
 	public void getReport() {
 		
 		extent = ReportManager.getInstance();
+	    if (extent == null) {
+	        logger.error("Failed to initialize ExtentReports instance.");
+	    } else {
+	        logger.info("ExtentReports instance initialized successfully.");
+	    }
 	}
 	@AfterSuite
-	public void flushReport() { 
-	        extent.flush();
-
+	public void writeReport() {
+		
+		 extent.flush();
 	}
 		
 	@Parameters({"bName", "headless"})
 	@BeforeMethod(alwaysRun = true)
 	public void setup(@Optional("chrome") String browserName, @Optional("false") boolean headLess, Method mName) throws FileNotFoundException, IOException {
 
-//		test = extent.createTest(mName.getName());
-		test.set(extent.createTest(mName.getName()));
+        test.set(extent.createTest(mName.getName()));
+        
 		setDriver(browserName, headLess);
 		WebDriver driver = getDriver();
 		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));		
@@ -110,7 +115,8 @@ public class BaseTest {
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-		 getDriver().quit();
+//		 getDriver().quit();
+		
 	}
 	
 }

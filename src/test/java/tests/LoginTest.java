@@ -19,30 +19,25 @@ public class LoginTest extends BaseTest{
 	@Test()
 	public void loginErrMsgTC01() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
-		logger.info("LoginTest:loginErrMsgTC01:Browser instance launched");
-		
+		logger.info("LoginTest:loginErrMsgTC01:Browser instance launched");		
 		LoginPage lp = new LoginPage(driver);	
 		test.get().info("Login Page launched");
 		logger.info("Login Page launched");
 		String expectedUserName = FileUtils.readLoginPropertiesFile("valid.username");
 		lp.enterUsername();
 		test.get().info("Username Entered.");		
-		logger.info("Username Entered.");	
 		String actualUserName = CommonActionUtils.getElementValueAttribute(lp.userName);
 		Assert.assertEquals(expectedUserName, actualUserName);
 		
 		lp.user_password.clear();
 		test.get().info("Password field is empty.");		
-		logger.info("Password Cleared.");
 		String actualPassword = CommonActionUtils.getElementValueAttribute(lp.user_password);
 		Assert.assertEquals("", actualPassword);
 	
 		lp.clickLogin();	
 		test.get().info("Clicked login button");
-		logger.info("Login Button Clicked.");
 		Assert.assertEquals(lp.getErrorMessage(), FileUtils.readLoginPropertiesFile("password_error_text"));
 		test.get().log(Status.PASS, "Error message '"+lp.getErrorMessage()+"' is displayed");
-		logger.info("Error message '"+lp.getErrorMessage()+"' is displayed");
 //		ScreenshotUtils.captureScreenshot(driver);
 	}
 	
@@ -55,21 +50,17 @@ public class LoginTest extends BaseTest{
 		String expectedUserName = FileUtils.readLoginPropertiesFile("valid.username");
 		lp.enterUsername();
 		test.get().info("Username Entered.");
-		logger.info("Username Entered.");
 		String actualUserName = CommonActionUtils.getElementValueAttribute(lp.userName);
 		Assert.assertEquals(expectedUserName, actualUserName);		
 		String expectedPassWord = FileUtils.readLoginPropertiesFile("valid.password");
 		lp.enterPassword();
 		test.get().info("Password Entered.");
-		logger.info("Password Entered.");
 		String actualPassword = lp.user_password.getAttribute("value");
 		Assert.assertEquals(expectedPassWord, actualPassword);
 		lp.clickLogin();
 		test.get().info("Clicked login button");
-		logger.info("Login Button Clicked.");
 		Assert.assertTrue(hp.isHomePage(driver), "Home Page should be displayed.");
 		test.get().pass(hp.getHomePageTitle(driver)+" page is opened.");
-		logger.info(hp.getHomePageTitle(driver)+" page is opened.");
 //		throw new ElementNotInteractableException("");
 	}
 	
@@ -85,16 +76,11 @@ public class LoginTest extends BaseTest{
 		
 		lp.enterUsername();	
 		lp.enterPassword();
-		test.get().log(Status.INFO, "Username and Password is entered.");	
-		logger.info("Username and Password is Entered.");
-		
+		test.get().log(Status.INFO, "Username and Password is entered.");		
 		lp.clickRememberMe();
-		test.get().log(Status.INFO, "Selected Remember me checkbox");
-		logger.info("Selected Remember me checkbox.");
-		
+		test.get().log(Status.INFO, "Selected Remember me checkbox");		
 		lp.clickLogin();
 		test.get().log(Status.INFO, "Login Button Clicked.");
-		logger.info("Login Button Clicked.");
 		Assert.assertTrue(hp.isHomePage(driver), "Salesforce home page must be displayed");
 		
 		hp.clickUserMenu(driver);
@@ -103,10 +89,9 @@ public class LoginTest extends BaseTest{
 		
 		hp.logout(driver);
 		test.get().log(Status.INFO, "Logout button is clicked.");
-		logger.info("Logout button is clicked.");
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login | Salaesforce Page");
 		Assert.assertTrue(lp.isRememberMeChecked(driver));
-		Assert.assertTrue(lp.isSavedUserName(), "Validate username dispalys in use name field.");
+		Assert.assertTrue(lp.isSavedUserName(driver), "Validate username dispalys in use name field.");
 		
 	}
 	
@@ -115,9 +100,7 @@ public class LoginTest extends BaseTest{
 		WebDriver driver = getDriver();
 		LoginPage lp = new LoginPage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login Page");
-		test.get().log(Status.INFO , "On Login Page");
-		logger.info("On login page.");
-		
+		test.get().log(Status.INFO , "On Login Page");	
 		lp.forgetPassword(driver);
 		Assert.assertTrue(lp.isForgetPasswordPage(driver), "Verify Forget Password Page is displayed.");
 		test.get().log(Status.PASS, "Forget Password Page is displayed.");	

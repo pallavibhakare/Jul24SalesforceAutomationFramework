@@ -24,7 +24,7 @@
 	    <groupId>org.testng</groupId>
 	    <artifactId>testng</artifactId>
 	    <version>7.10.2</version>
-	    <!-- <scope>test</scope>   this will set scope only yo src/test/java folder, removing this will makes TestNG vaailable for all packages-->
+	    <scope>test</scope>    <!-- this will set scope only yo src/test/java folder, removing this will makes TestNG vaailable for all packages-->
 	</dependency>
 	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 	<dependency>

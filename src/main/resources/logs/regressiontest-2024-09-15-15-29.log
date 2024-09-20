@@ -1,0 +1,25 @@
+2024-09-15-15:29:08 INFO  checkRememberMeTC03: Login page launched.
+2024-09-15-15:29:09 DEBUG Username is entered.
+2024-09-15-15:29:10 DEBUG Password is Entered.
+2024-09-15-15:29:10 INFO  Username and Password is Entered.
+2024-09-15-15:29:10 INFO  Selected Remember me checkbox.
+2024-09-15-15:29:11 INFO  Login Button Clicked.
+2024-09-15-15:29:12 INFO  User menu Clicked
+2024-09-15-15:29:12 INFO  Logout button is clicked.
+2024-09-15-15:29:17 INFO  On login page.
+2024-09-15-15:29:21 INFO  LoginTest:loginErrMsgTC01:Browser instance launched
+2024-09-15-15:29:21 INFO  Login Page launched
+2024-09-15-15:29:22 DEBUG Username is entered.
+2024-09-15-15:29:22 INFO  Username Entered.
+2024-09-15-15:29:22 INFO  Password Cleared.
+2024-09-15-15:29:23 INFO  Login Button Clicked.
+2024-09-15-15:29:23 INFO  Error message 'Please enter your password.' is displayed
+2024-09-15-15:29:25 INFO  loginToSalesfoceTC02: Login Page Launched.
+2024-09-15-15:29:26 DEBUG Username is entered.
+2024-09-15-15:29:26 INFO  Username Entered.
+2024-09-15-15:29:26 DEBUG Password is Entered.
+2024-09-15-15:29:26 INFO  Password Entered.
+2024-09-15-15:29:28 INFO  Login Button Clicked.
+2024-09-15-15:29:29 INFO  Home Page ~ Salesforce - Developer Edition page is opened.
+2024-09-15-15:29:33 DEBUG Wrong username is entered.
+2024-09-15-15:29:33 DEBUG Wrong Password is Entered.

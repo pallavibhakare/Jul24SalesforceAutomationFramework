@@ -68,12 +68,16 @@ public class MySettingsPage extends BasePage{
 
 	    // Click on Personal Settings and Login History
 	    personal.click();
+	    logger.info("'Personal' tab is clicked from My Settings.");
 	    login_history.click();
+	    logger.info("'Login History' tab is clicked from 'Personal' tab.");
 
 	    // Check if the download link is available and click it
 	    if (login_historyDownloadLink.isDisplayed()) {
-	        login_historyDownloadLink.click();	
+	        login_historyDownloadLink.click();
+	        logger.info("'Download login history' link is clicked.");
 	        isFileDownloaded = true;
+	        logger.info("File downloaded successfully.");
 	    }
 
 	    // Get the download path and check if the file has been downloaded
@@ -177,28 +181,34 @@ public class MySettingsPage extends BasePage{
 	public void emailAndSettings(WebDriver driver) throws FileNotFoundException, IOException {
 		WaitUtils.WaitForVisibility(driver, emailLink);
 		emailLink.click();
-		
+		logger.info("'Email' tab is clicked from 'My Settings'.");
 		WaitUtils.WaitForVisibility(driver, myEmailSettings);
 		myEmailSettings.click();
-		
+		logger.info("'My Email Settings' tab is clicked from 'Email' tab.");
 		emailSenderName.clear();
 		emailSenderName.sendKeys(FileUtils.readMySettingsPropertiesFile("eamilSenderName"));
-		
+		logger.info("'Email Name' is entered.");
 		bccRadioButton.click();
+		logger.info("'Automatic Bcc' radio button is clicked.");
 		saveButton.click();		
+		logger.info("'My Email Settings' are saved.");
 	}
 
 	public void calenderAndReminders(WebDriver driver) throws FileNotFoundException, IOException {
 		
 		calenderAndReminders.click();
+		logger.info("'Calender & Reminders' is Clicked.");
 		activityReminders.click();
+		logger.info("'Activity Reminders' is Clicked.");
 		testReminder.click();
+		logger.info("'Open a Test Reminder' is Clicked.");
 		String parentWindow = CommonActionUtils.getParentWindowHandle(driver);
 		WaitUtils.waitForNewWindow(driver);
 	    Set<String> windowHandles = driver.getWindowHandles();
 	    for (String handle : windowHandles) {
 	        if (!handle.equals(parentWindow)) {
-	            driver.switchTo().window(handle);	         
+	            driver.switchTo().window(handle);	
+	            logger.info("'Reminders' window is open.");
 	        }
 	    }
 	    WaitUtils.waitForTitleToBe(driver, driver.getTitle());

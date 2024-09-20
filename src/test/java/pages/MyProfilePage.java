@@ -111,7 +111,8 @@ public class MyProfilePage extends BasePage {
 		return isMyprofilePage;
 	}
 	public void clickEditProfileBtn() {
-		editPen.click();		
+		editPen.click();	
+		logger.info("Chilcked on the Edit Icon.");
 	}
 	
 	public boolean verifyContactIframeAvailability(WebDriver driver) {
@@ -128,33 +129,42 @@ public class MyProfilePage extends BasePage {
 	}
 	public void clickAboutTab() {
 		aboutTab.click();
+		logger.info("Clicked on the 'About' tab");
 	}
 	public boolean verifyAboutTabOperations(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isLastNameChanged = true;
 		lastName.clear();
 		String update_lastname = FileUtils.readMyProfilePropertiesFile("update.lastName");
 		lastName.sendKeys(update_lastname);
+		logger.debug("last name is entered.");
 		saveAllBtn.click();
+		logger.debug("Save Changes.");
 		driver.switchTo().defaultContent();
 		if(!userName.getText().contains(update_lastname)) {
 			isLastNameChanged = false;
+			logger.debug("Can not change last name.");
 		}		
+		logger.debug("Last Name Changed Successfully.");
 		return isLastNameChanged;
 	}
 	public boolean verifyPostCreated(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean postIsCreated =true;
 		
 		postLink.click();
+		logger.info("Post link is clicked.");
 		driver.switchTo().frame(iframeForPostText);
 		String message = FileUtils.readMyProfilePropertiesFile("postContent");
 		postTextArea.sendKeys(message);
+		logger.info("Post message is entered.");
 		driver.switchTo().defaultContent();
 		if(shareButton.isDisplayed()) {
 			shareButton.click();
+			logger.debug("Post is shared.");
 		}	
 		WaitUtils.explicitWaitForElementsVisibility(driver, view_highlight);
 		if(!view_highlight.isDisplayed()) {
-			 postIsCreated = false;			
+			 postIsCreated = false;		
+			 logger.debug("Post is created successfully.");
 		}
 		return postIsCreated;
 	}
@@ -162,9 +172,13 @@ public class MyProfilePage extends BasePage {
 		boolean isFileUploaded = true;
 		if(fileLink.isDisplayed()) {
 			fileLink.click();
+			logger.debug("Clicked on File link.");
 			uploadFileAction.click();
+			logger.debug("Clicked 'Upload a file from your computer'.");
 			chooseFile.sendKeys(FileConstants.TEST_FILE_UPLOAD_PATH);
+			logger.debug("File is selected to upload");
 			upload.click();
+			logger.info("File is shared.");
 			if(WaitUtils.explicitWaitForInVisibility(driver, cancelUpload)) {
 				isFileUploaded = true;
 			}			
@@ -174,7 +188,7 @@ public class MyProfilePage extends BasePage {
 	public void clickOnAddPhoto(WebDriver driver) {
 		CommonActionUtils.mouseHover(driver, moderator);
 		addPhotoLink.click();
-		
+		logger.debug("Clicked on 'Add Photo'.");
 	}
 	public boolean verifyAddPhoto(WebDriver driver) {
 		boolean isPhotoUploaded = false;
@@ -183,10 +197,13 @@ public class MyProfilePage extends BasePage {
 			uploadPhoto.sendKeys(FileConstants.TEST_FILE_PHOTO_PATH);
 			WaitUtils.explicitlyWaitForClickableElement(driver, uploadSaveBtn);
 			uploadSaveBtn.click();
+			logger.debug("Photo is selected to upload.");
 			WaitUtils.explicitWaitForInVisibility(driver, spinnerIcon1);
-			cropAndSave.click();				
+			cropAndSave.click();	
+			logger.debug("Photo is cropped to upload.");
 			WaitUtils.explicitWaitForInVisibility(driver, cropSpinner);
 			isPhotoUploaded = true;
+			logger.debug("Photo is Uploaded Successfully.");
 		}else {
 			isPhotoUploaded = false;
 		}

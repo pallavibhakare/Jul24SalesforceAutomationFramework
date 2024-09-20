@@ -8,6 +8,8 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import utils.CommonActionUtils;
 import utils.FileUtils;
 import utils.WaitUtils;
 
@@ -45,11 +47,19 @@ public class HomePage extends BasePage {
 	
 	@FindBy(xpath = "//a[@class='setupSection']/span[contains(text(), 'My Settings')]")
 	public WebElement mySettingsSetupText;
-	
-	
+
+	@FindBy(id = "theloginform")
+	public WebElement loginForm;
+	@FindBy(id = "editors-body")
+	public WebElement editorBody;
 	
 	public void clickMySettings() {
 		mySettings.click();
+		logger.info("Clicked on 'My Settings'.");
+	}
+	public void clickDeveloperConsole() {
+		devConsole.click();
+		logger.info("Clicked on 'Developer Console'.");
 	}
 
 	public String getUserName(WebDriver driver) {
@@ -58,6 +68,7 @@ public class HomePage extends BasePage {
 	public void clickUserMenu(WebDriver driver) {
 		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
 		usersNavLabel.click();
+		logger.info("Clicked on User Menu");
 	}
 	public boolean isUserMenuAvailable() {
 		return usersNavLabel.isDisplayed();
@@ -75,6 +86,9 @@ public class HomePage extends BasePage {
 	public String getHomePageTitle(WebDriver driver) {
 		return driver.getTitle();
 		
+	}
+	public String getPageTitle(WebDriver driver) {
+		return driver.getTitle();		
 	}
 	
 	/**This function will verify user menu options
@@ -107,6 +121,18 @@ public class HomePage extends BasePage {
 			return true;
 		}else {
 			return false;
+		}		
+	}
+	
+	public boolean isLoginPage(WebDriver driver) throws FileNotFoundException, IOException {
+		WaitUtils.WaitForVisibility(driver, loginForm);
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		String expectedLoginpageTitle = FileUtils.readHomepagePropertiesFile("loginPageTitle");
+		String actualLoginpageTitle = driver.getTitle();
+		if(actualLoginpageTitle.equals(expectedLoginpageTitle)) {
+			return true;
+		}else {
+			return false;
 		}
 		
 	}
@@ -123,6 +149,45 @@ public class HomePage extends BasePage {
 			System.out.println("MySettings page is not Lunched");
 		}
 		return isMysettingsPage;
+	}
+	public void isDevConsoleDisplayed(WebDriver driver) throws FileNotFoundException, IOException {
+		// Check if driver is not null
+	    if (driver == null) {
+	        logger.error("WebDriver instance is null.");
+	        return;
+	    }
+
+	    // Get the parent window handle and child windows
+	    String parentWindow = driver.getWindowHandle();
+	    CommonActionUtils.getChildWindows(driver);
+
+	    // Wait for the title
+	    WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+
+	    // Get the actual title
+	    String actualTitle = driver.getTitle();
+
+	    // Get the expected title from properties file
+	    String expectedTitle = FileUtils.readHomepagePropertiesFile("develoerConsoleHomePageTitle");
+
+	    // Check if expectedTitle is not null
+	    if (expectedTitle == null) {
+	        logger.error("Expected title from properties file is null.");
+	        return;
+	    }
+
+	    // Compare the actual and expected titles
+	    if (actualTitle.equals(expectedTitle)) {
+	        logger.info(driver.getTitle() + " is displayed.");
+	    } else {
+	        logger.info("Cannot display page title.");
+	    }
+
+	    // Switch back to the parent window
+	    driver.switchTo().window(parentWindow);
+
+	    // Optionally, quit the driver at the end
+	    // driver.quit();
 	}
 
 	

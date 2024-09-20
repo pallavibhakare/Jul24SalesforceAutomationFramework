@@ -16,6 +16,8 @@ public class FileConstants {
 			"/src/test/java/testData/myprofilepage_test_data.properties";
 	public static final String MYSETTINGS_TEST_DATA_FILE_PATH = ROOT_PATH +
 			"/src/test/java/testData/mysettings_test_data.properties";
+	public static final String ACCOUNTPAGE_TEST_DATA_FILE_PATH = ROOT_PATH +
+			"/src/test/java/testData/accountsPage_test_data.properties";
 
 	public static final String TEST_FILE_UPLOAD_PATH = ROOT_PATH +
 			"/src/test/resources/SampleData.xlsx";

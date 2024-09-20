@@ -7,7 +7,6 @@ import tests.BaseTest;
 import utils.ScreenshotUtils;
 
 public class TestListener implements ITestListener{
-	
 	public void onTestStart(ITestResult result) {
 		BaseTest.test.get().log(Status.INFO, result.getName()+" STARTED.");
 	}

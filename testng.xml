@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
+	<!-- Define global parameters for tests -->
+	<parameter name="bName" value="chrome"></parameter>
+	<parameter name="headless" value="false"></parameter>	
   <test name="Test">
     <classes>
       <class name="tests.LoginTest"/>
       <class name="tests.HomeTest"/>
+      <class name="tests.CreateAccountTest"/>
     </classes>
   </test> <!-- Test -->
-</suite> <!-- Suite -->
+</suite> <!-- ParalleSuite -->

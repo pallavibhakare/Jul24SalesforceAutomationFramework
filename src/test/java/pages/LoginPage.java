@@ -63,8 +63,10 @@ public class LoginPage extends BasePage{
 		boolean usernameEntered = false;
 		if(userName.getCssValue("value") != null) {
 			usernameEntered = true;
+			logger.info("Username entered.");
 		}else {
 			usernameEntered = false;
+			logger.info("can not enter Username.");
 		}
 		return usernameEntered;
 	}
@@ -72,16 +74,20 @@ public class LoginPage extends BasePage{
 		boolean passwordEntered = false;
 		if(user_password.getCssValue("value") != null) {
 			passwordEntered = true;
+			logger.info("Password entered.");
 		}else {
 			passwordEntered = false;
+			logger.info("please enter password.");
 		}
 		return passwordEntered;
 	}
 	
-	public boolean isSavedUserName() {
+	public boolean isSavedUserName(WebDriver driver) {
 		boolean displayed = true;
+		WaitUtils.WaitForVisibility(driver, savedUserName);
 		if(!savedUserName.isDisplayed()) {
 			displayed = false;
+			logger.info("Username is not saved.");
 		}
 		return displayed;
 	}
@@ -96,7 +102,8 @@ public class LoginPage extends BasePage{
 		logger.debug("Wrong Password is Entered.");
 	}
 	public void clickLogin() {
-		this.loginButton.click();		
+		this.loginButton.click();	
+		logger.info("'Login' button is clicked");
 	}
 	public String getErrorMessage() {		
 		return errorMessage.getText();
@@ -108,19 +115,23 @@ public class LoginPage extends BasePage{
 			isALoginPage = false;
 		}else {
 			isALoginPage = true;
+			logger.info("Login Page is displayed.");
 		}
 		return isALoginPage;
 	}
 	public void clickRememberMe() {
 		rememberMe.click();
+		logger.info("Checked Remember Me checkbox.");
 	}
 	public boolean isRememberMeChecked(WebDriver driver) {
 		boolean rememberMeChecked = false;
 		WaitUtils.explicitWaitForElementsVisibility(driver, rememberMe);
 		if(rememberMe.isSelected()) {			
 			rememberMeChecked = true;
+			logger.info("Remember Me is checked.");
 		}else {
 			rememberMeChecked = false;
+			logger.info("'Remember Me' checkbox is not checked.");
 		}
 		return rememberMeChecked;
 	}
@@ -139,7 +150,8 @@ public class LoginPage extends BasePage{
 		return new HomePage(driver);
 	}
 	public void forgetPassword(WebDriver driver) {
-		forgetPassword.click();		
+		forgetPassword.click();	
+		logger.info("'Forget Password' link is cliked.");
 	}
 	public boolean isForgetPasswordPage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isForgetPasswordPage = true;
@@ -150,14 +162,16 @@ public class LoginPage extends BasePage{
 	}
 	public void forgotYourPassword(WebDriver driver) throws FileNotFoundException, IOException {
 		
-		UserNameForForgetPassword.sendKeys(FileUtils.readLoginPropertiesFile("UserNameForForgetPassword"));
+		UserNameForForgetPassword.sendKeys(FileUtils.readLoginPropertiesFile("UserNameForForgetPassword"));		
 		continueBtn.click();
+		logger.info("'Continue' button is cliked.");
 	}
 	public boolean isResetMessagePage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isPasswordResetPage = false;
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		if(driver.getTitle().equals(FileUtils.readLoginPropertiesFile("emailSentPageTitle")) ) {
 			isPasswordResetPage = true;
+			logger.info(" Password reset link is sent.");
 		}else {
 			isPasswordResetPage = false;
 		}
@@ -168,7 +182,6 @@ public class LoginPage extends BasePage{
 			return true;
 		}else {
 			return false;
-		}
-		
+		}		
 	}
 }

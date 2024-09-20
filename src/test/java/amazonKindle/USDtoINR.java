@@ -62,8 +62,7 @@ public class USDtoINR {
        
 //        driver.close();
         
-}
-
+	}
 
 	private static void CaptureScreenShots(WebDriver driver) {
 		TakesScreenshot page = (TakesScreenshot) driver;
@@ -72,7 +71,4 @@ public class USDtoINR {
 		src.renameTo(destination);
 		
 	}
-
-
-
 }

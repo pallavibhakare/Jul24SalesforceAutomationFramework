@@ -24,4 +24,24 @@ public class FileUtils {
 		p.load(new FileReader(FileConstants.MYPROFILE_TEST_DATA_FILE_PATH));
 		return p.getProperty(key);
 	}
+	public static String readMySettingsPropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.MYSETTINGS_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
+	public static String readAccountsPagePropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.ACCOUNTPAGE_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
+	public static String readLeadsPagePropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.LEADS_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
+	public static String readCreateOptyPagePropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.CREATEOPTY_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
 }

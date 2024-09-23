@@ -1,0 +1,10 @@
+2024-09-23-10:15:46 INFO  ExtentReports instance initialized successfully.
+2024-09-23-10:15:51 DEBUG Username is entered.
+2024-09-23-10:15:53 DEBUG Password is Entered.
+2024-09-23-10:15:54 INFO  'Login' button is clicked
+2024-09-23-10:15:57 INFO  'Opportunities' tab is clicked
+2024-09-23-10:15:57 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-23-10:15:57 INFO  'Current FQ' is selected from Interval
+2024-09-23-10:15:58 INFO  'Open Opportunities' is selected from Include
+2024-09-23-10:16:00 INFO  'Run Report' button is clicked
+2024-09-23-10:16:00 INFO  Report page with Opportunities thar satisfies the search critera is displayed.

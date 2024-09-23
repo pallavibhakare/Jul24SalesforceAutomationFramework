@@ -33,6 +33,16 @@ public class WaitUtils {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(elementToWait));
 	}
+	
+	public static void waitForNewWindow(WebDriver driver) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+	}
+	
+	public static void WaitForVisibility(WebDriver driver, WebElement elementToWait) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOf(elementToWait));
+	}
 	public static void explicitWaitForElementsInVisibility(WebDriver driver, WebElement elementToWait) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.invisibilityOf(elementToWait));

@@ -51,7 +51,16 @@ public class CreateAccountTest extends BaseTest {
 	public void mergeAccountsTC13() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
 		cap.mergeAccounts(driver);
-//		Assert.assertTrue(cap.isUnsavedReportsPage());
-		
+		Assert.assertTrue(cap.isAccountsPage(driver));
+		test.get().info("Accounts Page is displayed.");		
+	}
+	@Test(description = "Bug")
+	public void createAccountReportTC14() throws FileNotFoundException, IOException {
+		WebDriver driver = getDriver();
+		cap.getAccountReports(driver);
+		Assert.assertTrue(cap.isUnsavedReportPage(driver));
+		test.get().info("Unsaved Reports page is displayed");
+		cap.selectReportOptions(driver);
+		Assert.assertTrue(cap.isReportsDashboradPage(driver));
 	}
 }

@@ -1,0 +1,11 @@
+2024-09-22-22:25:02 INFO  ExtentReports instance initialized successfully.
+2024-09-22-22:25:12 INFO  ExtentReports instance initialized successfully.
+2024-09-22-22:25:15 DEBUG Username is entered.
+2024-09-22-22:25:16 DEBUG Password is Entered.
+2024-09-22-22:25:17 INFO  'Login' button is clicked
+2024-09-22-22:25:19 INFO  'Opportunities' tab is clicked
+2024-09-22-22:25:19 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-22-22:25:20 INFO  'New' opportunity button is clicked.
+2024-09-22-22:25:20 DEBUG 'Opportunity Edit: New Opportunity ~ Salesforce - Developer Edition' page is displayed.
+2024-09-22-22:25:20 INFO  'Opportunity Name' is entered.
+2024-09-22-22:25:20 INFO  * is entered in search input.

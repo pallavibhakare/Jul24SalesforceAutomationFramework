@@ -44,4 +44,14 @@ public class FileUtils {
 		p.load(new FileReader(FileConstants.CREATEOPTY_TEST_DATA_FILE_PATH));
 		return p.getProperty(key);
 	}
+	public static String readContactsPropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.CONTACTS_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
+	public static String readRandomScenariosPropertiesFile(String key) throws FileNotFoundException, IOException {
+		Properties p = new Properties();
+		p.load(new FileReader(FileConstants.RANDOMSCENARIOS_TEST_DATA_FILE_PATH));
+		return p.getProperty(key);
+	}
 }

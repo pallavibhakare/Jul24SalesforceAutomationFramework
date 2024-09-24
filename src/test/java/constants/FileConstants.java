@@ -22,6 +22,10 @@ public class FileConstants {
 			"/src/test/java/testData/leads_test_data.properties";
 	public static final String CREATEOPTY_TEST_DATA_FILE_PATH = ROOT_PATH +
 			"/src/test/java/testData/create_opty_test_data.properties";
+	public static final String CONTACTS_TEST_DATA_FILE_PATH = ROOT_PATH +
+			"/src/test/java/testData/contacts_test_data.properties";
+	public static final String RANDOMSCENARIOS_TEST_DATA_FILE_PATH = ROOT_PATH +
+			"/src/test/java/testData/random_scenarios_test_data.properties";
 	
 	public static final String TEST_FILE_UPLOAD_PATH = ROOT_PATH +
 			"/src/test/resources/SampleData.xlsx";

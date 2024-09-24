@@ -5,12 +5,16 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
+
+import listeners.TestListener;
 import pages.CreateAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 
+@Listeners(TestListener.class)
 public class CreateAccountTest extends BaseTest {
 	HomePage hp;
 	CreateAccountPage cap;
@@ -24,7 +28,7 @@ public class CreateAccountTest extends BaseTest {
 		hp = new HomePage(driver);
 		cap = new CreateAccountPage(driver);
 		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page id displayed.");
+		test.get().log(Status.INFO, "Home page is displayed.");
 		cap.clickAccountsLink(driver);
 		Assert.assertTrue(cap.isAccountsPage(driver), "Accounts Page should be displayed.");
 		test.get().log(Status.INFO, "Accounts Page is displayed.");

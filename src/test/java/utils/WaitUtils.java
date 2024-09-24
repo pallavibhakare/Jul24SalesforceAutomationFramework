@@ -17,6 +17,10 @@ public class WaitUtils {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         wait.until(ExpectedConditions.titleIs(elementToWait));
 	}
+	public static void waitForAttributeTobeNotEmpty(WebDriver driver, WebElement inputField) throws FileNotFoundException, IOException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(inputField, "value"));
+	}
 	
 	public static boolean explicitlyWaitForClickableElement(WebDriver driver, WebElement elementToClick) {
 		boolean isElementClickable = false;

@@ -53,6 +53,11 @@ public class HomePage extends BasePage {
 	@FindBy(id = "editors-body")
 	public WebElement editorBody;
 	
+	@FindBy(id = "fcf")
+	public WebElement viewDropdownSelect;	
+	@FindBy(xpath = "//select[@id='fcf']/option")
+	public List<WebElement> viewDropdownSelectOptions; 
+	
 	public void clickMySettings() {
 		mySettings.click();
 		logger.info("Clicked on 'My Settings'.");
@@ -107,6 +112,7 @@ public class HomePage extends BasePage {
 	}
 	
 	public LoginPage logout(WebDriver driver) throws FileNotFoundException, IOException {		
+		clickUserMenu(driver);
 		logoutLink.click();
 		return new LoginPage(driver);
 	}

@@ -1,10 +1,6 @@
 package utils;
 
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
@@ -78,7 +74,7 @@ public class CommonActionUtils {
 		driver.switchTo().window(parentWindow);
 		driver.quit();
 	}
-public static void clickAndSwitchTonewWindow(WebDriver driver, WebElement clicableElement) {
+	public static void clickAndSwitchTonewWindow(WebDriver driver, WebElement clicableElement) {
 		String mainWindow = driver.getWindowHandle();
 		clicableElement.click();
 		Set<String> allOpenWindows = driver.getWindowHandles();
@@ -90,5 +86,13 @@ public static void clickAndSwitchTonewWindow(WebDriver driver, WebElement clicab
 						
 		}
 		
+	}
+	public static List<String> getDropdownOptionNames(WebDriver driver, List<WebElement> listOfOptions) {
+
+		List<String> optionNames = new ArrayList<>();		
+		for(WebElement option :listOfOptions) {
+			optionNames.add(option.getText());
+		}
+		return optionNames;
 	}
 }

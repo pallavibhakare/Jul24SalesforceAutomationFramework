@@ -6,16 +6,19 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
 
+import listeners.TestListener;
 import pages.CreateAccountPage;
 import pages.CreateOptyPage;
 import pages.HomePage;
 import pages.LeadsPage;
 import pages.LoginPage;
 
+@Listeners(TestListener.class)
 public class CreateOptyTest extends BaseTest {
 	HomePage hp;
 	CreateAccountPage cap;
@@ -31,7 +34,7 @@ public class CreateOptyTest extends BaseTest {
 		hp = new HomePage(driver);
 		cop = new CreateOptyPage(driver);
 		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page id displayed.");		
+		test.get().log(Status.INFO, "Home page is displayed.");		
 	}
 	
 	@Test

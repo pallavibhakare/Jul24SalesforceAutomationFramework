@@ -115,7 +115,7 @@ public class BaseTest {
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-//		 getDriver().quit();
+		 getDriver().quit();
 		
 	}
 	

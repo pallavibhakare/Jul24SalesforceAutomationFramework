@@ -8,7 +8,6 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import utils.CommonActionUtils;
 import utils.FileUtils;
 import utils.WaitUtils;
@@ -55,8 +54,15 @@ public class HomePage extends BasePage {
 	
 	@FindBy(id = "fcf")
 	public WebElement viewDropdownSelect;	
+	
 	@FindBy(xpath = "//select[@id='fcf']/option")
 	public List<WebElement> viewDropdownSelectOptions; 
+	
+	@FindBy(xpath = "//li[@id='home_Tab']/a")
+	public WebElement homeTab;
+	
+	@FindBy(xpath = "//h1[@class='currentStatusUserName']/a")
+	public WebElement userNameLink;
 	
 	public void clickMySettings() {
 		mySettings.click();
@@ -71,7 +77,8 @@ public class HomePage extends BasePage {
 		return usersNavLabel.getText();
 	}
 	public void clickUserMenu(WebDriver driver) {
-		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
+//		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
+		WaitUtils.WaitForVisibility(driver, usersNavLabel);
 		usersNavLabel.click();
 		logger.info("Clicked on User Menu");
 	}
@@ -112,17 +119,20 @@ public class HomePage extends BasePage {
 	}
 	
 	public LoginPage logout(WebDriver driver) throws FileNotFoundException, IOException {		
-		clickUserMenu(driver);
-		logoutLink.click();
+		clickUserMenu(driver);	
+		logoutLink.click();		
 		return new LoginPage(driver);
 	}
-		
+	public void clickLogoutLink(WebDriver driver) {
+		logoutLink.click();
+	}
 	
 	public boolean isHomePage(WebDriver driver) throws FileNotFoundException, IOException {
 		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String expectedHomepageTitle = FileUtils.readHomepagePropertiesFile("homePageTitle");
 		String actualHomepageTitle = driver.getTitle();
+		WaitUtils.explicitlyWaitForClickableElement(driver, usersNavLabel);
 		if(actualHomepageTitle.equals(expectedHomepageTitle)) {
 			return true;
 		}else {
@@ -195,8 +205,92 @@ public class HomePage extends BasePage {
 	    // Optionally, quit the driver at the end
 	    // driver.quit();
 	}
+	public void clickHomeTab(WebDriver driver) {
+		homeTab.click();
+		logger.info("'Home' tab is clicked.");
+		
+	}
+	public boolean isHomeTabPage(WebDriver driver) throws FileNotFoundException, IOException {
+		
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		String actualHomepageTitle = driver.getTitle();	
+		String expectedHomepageTitle = FileUtils.readHomepagePropertiesFile("homeTabPage");
+		if(actualHomepageTitle.equals(expectedHomepageTitle)) {
+			return true;
+		}else {
+			return false;
+		}		
+		
+	}
+//	public boolean isFirstLastNameAndLinkDisplayed(WebDriver driver) throws FileNotFoundException, IOException {
+//		String userName = userNameLink.getText();
+//		Assert.assertTrue(userName.contains(FileUtils.readMyProfilePropertiesFile("update.firstName")), "First name is not displayed correctly.");
+//		Assert.assertTrue(userName.contains(FileUtils.readMyProfilePropertiesFile("update.lastName")), "Last name is not displayed correctly.");
+//		Assert.assertTrue(userNameLink.isDisplayed(), "User Name link is not displayed.");
+//		Assert.assertTrue(userNameLink.getAttribute("href").contains("/_ui/core/userprofile/UserProfilePage"), "Link does not point to the correct URL.");
+//		return true;
+//	}
+	public boolean isFirstLastNameAndLinkDisplayed(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isDispalyed= false;
+		if(userNameLink.isDisplayed()) {
+			String userName = userNameLink.getText();
+			String expectedFirstName = FileUtils.readMyProfilePropertiesFile("update.firstName");
+			String expectedLastName = FileUtils.readMyProfilePropertiesFile("update.lastName");
+			if(userName.contains(expectedFirstName)) {
+				logger.info("First name of  account holder is displayed.");
+			}else{
+				logger.error("First name is not displayed correctly.");
+				
+			}
+			if(userName.contains(expectedLastName)) {
+				logger.info("Last name of  account holder is displayed.");
+			}else{
+				logger.error("Last name is not displayed correctly.");
+				
+			}
+			if(userNameLink.isDisplayed()) {
+				logger.info("User Name link is displayed.");
+			}else{
+				logger.error("User Name link is not displayed.");
+				
+			}
+			if(userNameLink.getAttribute("href").contains("/_ui/core/userprofile/UserProfilePage")) {
+				logger.info("Link points to the correct URL.");
+			}else{
+				logger.error("Link does not point to the correct URL.");
+				
+			}
+			isDispalyed = true;
+		}else {
+			logger.info("User link is not available.");
+			isDispalyed = false;
+			
+		}
+		return isDispalyed;
+	}
+	public boolean clickUserNameLink(WebDriver driver) throws FileNotFoundException, IOException {
+		String userName = userNameLink.getText();
+		userNameLink.click();
+		logger.info("User Name link is clicked");		
+		boolean isUsersHomePage=false;
+		String expectedTitle = "User: "+ userName +" ~ Salesforce - Developer Edition";
+		String actualTitle = driver.getTitle();
+		if(actualTitle.equals(expectedTitle)) {
+			isUsersHomePage=true;
+			logger.info(actualTitle+" is displayed.");
+		}else {
+			logger.info("Can not display users profile page.");
+			isUsersHomePage=false;
+		}
+		return isUsersHomePage;
+	}
+	public boolean isLastNameUpdatedInUserMenu(WebDriver driver) throws FileNotFoundException, IOException {
+		String username =getUserName(driver);
+		String lname =FileUtils.readRandomScenariosPropertiesFile("update.lastName");
+		String actualPageTitle = driver.getTitle();
+		return username.contains(lname)  && actualPageTitle.contains(lname);
+	}
 
-	
 		
 
 	

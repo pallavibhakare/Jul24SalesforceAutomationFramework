@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,7 +48,10 @@ public class CommonActionUtils {
         
         // Generate a random index based on the size of the options
         Random random = new Random();
-        int randomIndex = random.nextInt(options.size());  // Generate a random index
+        int randomIndex ;
+        do {
+            randomIndex = random.nextInt(options.size());
+        } while (randomIndex == 0 && options.size() > 1); // Generate a random index
         
         // Select the random option
         dropdown.selectByIndex(randomIndex);
@@ -95,4 +99,8 @@ public class CommonActionUtils {
 		}
 		return optionNames;
 	}
+	
+	
+	
+	
 }

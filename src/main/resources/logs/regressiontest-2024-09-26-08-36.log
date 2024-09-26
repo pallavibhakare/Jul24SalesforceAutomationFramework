@@ -1,0 +1,13 @@
+2024-09-26-08:36:15 INFO  ExtentReports instance initialized successfully.
+2024-09-26-08:36:19 DEBUG Username is entered.
+2024-09-26-08:36:19 DEBUG Password is Entered.
+2024-09-26-08:36:20 INFO  'Login' button is clicked
+2024-09-26-08:36:23 INFO  'Home' tab is clicked.
+2024-09-26-08:36:24 INFO  Date Link is clicked.
+2024-09-26-08:36:25 INFO  4:00 PM Link is clicked.
+2024-09-26-08:36:26 INFO  The 'ComboBox' popup is opened.
+2024-09-26-08:36:26 INFO  Clicked 'Other' option in the popup.
+2024-09-26-08:36:26 INFO  The popup window is closed.
+2024-09-26-08:36:26 INFO  Other is entered in the Subject Field.
+2024-09-26-08:36:27 INFO  7:00 PM is selected in the 'End' field.
+2024-09-26-08:36:27 INFO  Recurrence 'checkbox' is selected.

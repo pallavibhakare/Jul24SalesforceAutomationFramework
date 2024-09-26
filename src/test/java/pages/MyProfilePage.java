@@ -2,9 +2,20 @@ package pages;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Set;
+
+import org.apache.hc.client5.http.impl.TunnelRefusedException;
+import org.checkerframework.checker.units.qual.t;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import constants.FileConstants;
 import utils.CommonActionUtils;
@@ -30,6 +41,9 @@ public class MyProfilePage extends BasePage {
 	
 	@FindBy(id = "contactTab")
 	public WebElement contactTab;
+	
+	@FindBy(id = "firstName")
+	public WebElement firstName;
 	
 	@FindBy(id = "lastName")
 	public WebElement lastName;
@@ -94,6 +108,12 @@ public class MyProfilePage extends BasePage {
 	@FindBy(xpath = "//*[@id='cropWaitingPage:croppingForm']/img")
 	public WebElement cropSpinner;
 	
+	@FindBy(className =  "currentStatusUserName")
+	public WebElement currentStatusUserName;
+	
+	@FindBy(id = "tailBreadcrumbNode")
+	public WebElement tailBreadcrumbNode;
+	
 	
 	public void clickMyProfile() {
 		myProfile.click();		
@@ -120,8 +140,10 @@ public class MyProfilePage extends BasePage {
 		if(WaitUtils.explicitlyWaitForClickableElement(driver, iframeAboutTab)) {
 			driver.switchTo().frame(iframeAboutTab);
 			if(aboutTab.isDisplayed() && contactTab.isDisplayed()) {
+				logger.info("'Edit profile' pop up is available.");
 				isIframeLoaded = true;
 			}else {
+				logger.info("'Edit profile' pop up is not available.");
 				isIframeLoaded = false;
 			}
 		}
@@ -135,6 +157,22 @@ public class MyProfilePage extends BasePage {
 		boolean isLastNameChanged = true;
 		lastName.clear();
 		String update_lastname = FileUtils.readMyProfilePropertiesFile("update.lastName");
+		lastName.sendKeys(update_lastname);
+		logger.debug("last name is entered.");
+		saveAllBtn.click();
+		logger.debug("Save Changes.");
+		driver.switchTo().defaultContent();
+		if(!userName.getText().contains(update_lastname)) {
+			isLastNameChanged = false;
+			logger.debug("Can not change last name.");
+		}		
+		logger.debug("Last Name Changed Successfully.");
+		return isLastNameChanged;
+	}
+	public boolean verifyAboutTabOperations1(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean isLastNameChanged = true;
+		lastName.clear();
+		String update_lastname = FileUtils.readRandomScenariosPropertiesFile("update.lastName");
 		lastName.sendKeys(update_lastname);
 		logger.debug("last name is entered.");
 		saveAllBtn.click();
@@ -210,5 +248,51 @@ public class MyProfilePage extends BasePage {
 		driver.switchTo().defaultContent();
 		return isPhotoUploaded;
 	}
+	public boolean verifyEditPopupTabSelected(WebDriver driver) {
+		boolean isAboutSelected = false;
+		String classAttribute = contactTab.getAttribute("class");
+		if(classAttribute.contains("zen-current")) {
+			logger.info("Current selected tab is 'Contacts'");
+			isAboutSelected = true;
+		}else {
+			logger.info("Current selected tab is 'About'");
+			isAboutSelected = false;
+		}
+		return isAboutSelected;
+	}
+	public boolean verifyFirstNameFocus(WebDriver driver) {
+		boolean foucsInFirst= true;
+		firstName.click();
+		boolean isFocused = driver.switchTo().activeElement().equals(firstName);
+		if(isFocused) {
+			logger.info("First Name field have focus.");	
+			foucsInFirst= true;
+		}else {
+			logger.info("First Name field does not have focus.");
+			foucsInFirst= false;
+		}
+		return foucsInFirst;
+	}
+	public boolean verifyEditPopupClosed(WebDriver driver) {
+		boolean popupClosed=false;
+		if(editPen.isDisplayed()) {
+			logger.info("Popup is closed.");
+			popupClosed=true;
+		}
+		return popupClosed;
+	}
+	public boolean isLastnameUpdatedInBreadcrumb(WebDriver driver) throws FileNotFoundException, IOException {
+	 String userName = tailBreadcrumbNode.getText();
+	 String lastname = FileUtils.readRandomScenariosPropertiesFile("update.lastName");
+		if(userName.contains(lastname)) {
+			logger.info("Last Name is update in breadcrumb.");
+			return true;
+		}else {
+			logger.info("Can not update Last Name.");
+			return false;
+		}
+	}
+	
+	
 	
 }

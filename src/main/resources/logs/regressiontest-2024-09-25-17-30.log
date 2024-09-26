@@ -1,0 +1,10 @@
+2024-09-25-17:30:55 INFO  ExtentReports instance initialized successfully.
+2024-09-25-17:30:58 DEBUG Username is entered.
+2024-09-25-17:30:59 DEBUG Password is Entered.
+2024-09-25-17:31:00 INFO  'Login' button is clicked
+2024-09-25-17:31:02 INFO  Clicked on '+'
+2024-09-25-17:31:02 INFO  All tabs page is displayed.
+2024-09-25-17:31:03 INFO  Clicked on 'Customize My Tabs'
+2024-09-25-17:31:03 INFO  Customize My Tabs Page is displayed.
+2024-09-25-17:31:03 INFO  'Home (default)' is selected from 'Selected Tabs'
+2024-09-25-17:31:03 INFO  'Remove' button is Clicked.

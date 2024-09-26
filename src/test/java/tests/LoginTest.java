@@ -87,11 +87,11 @@ public class LoginTest extends BaseTest{
 		test.get().log(Status.INFO, "User Menu is clicked.");
 		logger.info("User menu Clicked");
 		
-		hp.logout(driver);
+		hp.clickLogoutLink(driver);
 		test.get().log(Status.INFO, "Logout button is clicked.");
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login | Salaesforce Page");
 		Assert.assertTrue(lp.isRememberMeChecked(driver));
-		Assert.assertTrue(lp.isSavedUserName(driver), "Validate username dispalys in use name field.");
+		Assert.assertTrue(lp.isSavedUserName(driver), "Validate username displays in use name field.");
 		
 	}
 	

@@ -2,9 +2,12 @@ package pages;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 import utils.CommonActionUtils;
 import utils.FileUtils;
@@ -37,6 +40,9 @@ public class ContactsPage extends BasePage {
 	@FindBy(xpath = "//tr[@class='dataRow even first']/th/a")
 	public WebElement firstRowData;
 	
+	@FindBy(xpath = "//tr[@class='dataRow even last first']/th/a")
+	public WebElement firstLastRowData;
+	
 	@FindBy(xpath = "//span[@class='fFooter']/a[contains(text(),'Create New View')]")
 	public WebElement createNewViewLink;
 	
@@ -46,8 +52,32 @@ public class ContactsPage extends BasePage {
 	@FindBy(id="devname")
 	public WebElement viewUniqueNameInput;
 	
-	@FindBy(xpath = "//td[@class='pbButtonb']/input[@value=' Save ']")
+	@FindBy(xpath = "//div[@class='pbHeader']/table/tbody/tr/td[@class='pbButtonb']/input[@value=' Save ']  ")
 	public WebElement saveViewBtn;
+	
+	@FindBy(id="hotlist_mode")
+	public WebElement recentlyCreatedSelect;
+	
+	@FindBy(id="fcf")
+	public WebElement viewContactSelect;
+	
+	@FindBy(xpath = "//div[@class='pbBody']/table[@class='list']")
+	public WebElement contactsListTable;
+	
+	@FindBy(xpath = "//table[@class='list']/tbody/tr[contains(@class, 'dataRow')]/th")
+	public List<WebElement> rows;
+
+	@FindBy(className = "errorMsg")
+	public WebElement errorMessage;
+	
+	@FindBy(xpath = "//div[@class='pbHeader']/table/tbody/tr/td[@class='pbButtonb']/input[@value='Cancel']  ")
+	public WebElement cancelViewBtn;
+	
+	@FindBy(xpath = "//td[@id='topButtonRow']/input[@value='Delete']")
+	public WebElement deleteBtn;
+	
+	@FindBy(xpath = "//div[@class='filterLinks']/a[2]")
+	public WebElement deleteView;
 	
 	public void clickContactsTabLink() {
 		contacts_Tab.click();
@@ -146,7 +176,26 @@ public class ContactsPage extends BasePage {
 		}
 		return isViewNameEntered;
 	}
-	public boolean isViewUniqueNameEntered(WebDriver driver) throws FileNotFoundException, IOException {
+	public void enterViewName() throws FileNotFoundException, IOException {
+		viewNameInput.sendKeys(FileUtils.readContactsPropertiesFile("viewNameForCancel"));
+		logger.info("View Name is entered.");
+	}
+	public void enterUniqueViewName() throws FileNotFoundException, IOException {
+		viewUniqueNameInput.clear();
+		viewUniqueNameInput.sendKeys(FileUtils.readContactsPropertiesFile("createUniqueName"));
+		logger.info("Unique View Name is created.");
+	}
+	
+	public void saveCreateNewView() throws FileNotFoundException, IOException {
+		saveViewBtn.click();
+		logger.info("Saving Create New View");
+	}
+	
+	public void cancelCreateNewView() throws FileNotFoundException, IOException {
+		cancelViewBtn.click();
+		logger.info("Cancel 'Create New View'");
+	}
+	public boolean isViewUniqueNameGenerated(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isTrue=false;
 		viewUniqueNameInput.click();
 		WaitUtils.waitForAttributeTobeNotEmpty(driver, viewUniqueNameInput);
@@ -154,7 +203,7 @@ public class ContactsPage extends BasePage {
 		String expectedValue =FileUtils.readContactsPropertiesFile("viewName");  
 		if(autoGenVal.equals(expectedValue)) {
 			isTrue=true;
-			logger.info("View Name entered.");
+			logger.info("Unique View Name is generated.");
 		}else {
 			isTrue=false;
 			logger.info("Can not enter View Name.");
@@ -164,9 +213,9 @@ public class ContactsPage extends BasePage {
 	public boolean saveDetails(WebDriver driver) throws FileNotFoundException, IOException {
 		saveViewBtn.click();
 		logger.info("Saving Create New View");
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
-		String expected = FileUtils.readContactsPropertiesFile("contactaPage");
+		String expected = FileUtils.readContactsPropertiesFile("contactsPage");
 		
 		boolean isViewSaved= false;
 		if(actual.equals(expected)) {
@@ -177,5 +226,128 @@ public class ContactsPage extends BasePage {
 			logger.info("Can not display Contacts home page.");
 		}
 		return isViewSaved;
+	}
+	public void checkRecentlyCreated(WebDriver driver) {
+		CommonActionUtils.selectDropDownOption(driver, recentlyCreatedSelect, "Recently Created");
+		logger.info("Recently Created is selected.");
+	}
+	public boolean isRecentlyCreatedPage(WebDriver driver) {
+		Select select = new Select(recentlyCreatedSelect);
+		String selectedOption=select.getFirstSelectedOption().getText();
+		if(selectedOption.equals("Recently Created"))
+		{
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public void selectMyContacts(WebDriver driver) {
+		CommonActionUtils.selectDropDownOption(driver, viewContactSelect, "My Contacts");
+		logger.info("My Contacts is selected from the View select");		
+	}
+	public boolean isMyContactsPage(WebDriver driver) throws FileNotFoundException, IOException {
+		String expected = FileUtils.readContactsPropertiesFile("contactsPage");
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		String actual =driver.getTitle();
+		if(actual.equals(expected)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+
+	 public String clickAContactName(WebDriver driver) throws FileNotFoundException, IOException {
+		WebElement firstDataRow = contactsListTable.findElement(By.xpath(".//tr[2]"));
+		WebElement fisrtCell = firstDataRow.findElement(By.xpath(".//th[@scope='row']"));
+		WebElement link = fisrtCell.findElement(By.tagName("a"));
+		String contactName = link.getText();
+		link.click();
+		return contactName;
+	 }
+	public boolean isContactNamesPage(WebDriver driver ,String name) throws FileNotFoundException, IOException {
+
+		boolean isContactPageDispayed =false;
+		String contactName = name;
+		String[] parts = contactName.split(", "); // Split by comma and space
+		String formattedName = parts[1] + " " + parts[0]; // Combine last name and first name
+		contactName=formattedName;
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		String actualTitle = driver.getTitle();
+		System.out.println("a "+actualTitle);
+		if(actualTitle.contains(contactName)) {
+			logger.info("Contact page for "+contactName+" is displayed.");
+			isContactPageDispayed= true;
+		}else {
+			logger.info("Can not dispay Contact details.");
+			isContactPageDispayed =false;
+		}
+		return isContactPageDispayed;
+	}
+	public boolean validateErrorMessage(WebDriver driver) throws FileNotFoundException, IOException {
+		boolean errMsgDisplayed=false;
+		if(errorMessage.isDisplayed()) {
+			
+			String expectedErrorMessage = FileUtils.readContactsPropertiesFile("expectedErrorMessage");
+		    String actualErrorMessage = errorMessage.getText();
+		    
+		    System.out.println("ac: "+actualErrorMessage);
+		    System.out.println("ex: "+expectedErrorMessage);
+		    
+		    if(actualErrorMessage.equals(expectedErrorMessage)) {
+		    	logger.info("Error message is displayed.");
+		    	errMsgDisplayed=true;
+		    }
+		}else {
+			logger.info("Error message is not displayed.");
+			errMsgDisplayed=false;
+		}
+		return errMsgDisplayed;
+	}     
+	public String createContactWithNewBtn(WebDriver driver) throws FileNotFoundException, IOException {
+		String lname = "Indian";
+		lastName.sendKeys(lname);
+		logger.info("Last name entered.");
+		String parentWindow = driver.getWindowHandle();		
+		CommonActionUtils.clickAndSwitchTonewWindow(driver, accountNameIcon);
+		driver.switchTo().frame("searchFrame");
+		searchLookup.sendKeys("Global Media");
+		goBtn.click();
+		driver.switchTo().parentFrame();
+		driver.switchTo().frame("resultsFrame");
+		firstLastRowData.click();
+		driver.switchTo().window(parentWindow);
+		savebtn.click();
+		logger.info("Saved new contacts.");
+		return lname;
+	}
+	public boolean isNewContactDetailsPage(WebDriver driver) throws FileNotFoundException, IOException {
+		
+		boolean isNewContactPage=false;
+		String contactCreatedLastName = createContactWithNewBtn(driver); 
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		String actual =driver.getTitle();
+		System.out.println("a:"+actual);
+		String expected = "Contact: "+contactCreatedLastName+" ~ Salesforce - Developer Edition";
+		System.out.println("e:"+expected);
+		if(actual.equals(expected)) {
+			isNewContactPage=true;
+			logger.info("New Contact Page is displayed.");
+		}else {
+			isNewContactPage=false;
+			logger.info("Can not display New Contact Page.");
+		}
+		return isNewContactPage;
+	}
+	public void deleteRecord(WebDriver driver) {
+		
+			deleteBtn.click();
+			driver.switchTo().alert().accept();
+		
+	}
+	public void deleteView(WebDriver driver) {
+		
+			deleteView.click();
+			driver.switchTo().alert().accept();
+		
 	}
 }

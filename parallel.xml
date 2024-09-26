@@ -6,9 +6,12 @@
 	<parameter name="headless" value="false"></parameter>	
   <test name="Test">
     <classes>
-      <!-- <class name="tests.LoginTest"/>
-      <class name="tests.HomeTest"/>	-->
+      <class name="tests.LoginTest"/>
+      <class name="tests.HomeTest"/>	
       <class name="tests.CreateAccountTest"/>
+      <class name="tests.CreateOptyTest"/>
+      <class name="tests.LeadsTest"/>
+      <class name="tests.ContactsTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- ParalleSuite -->

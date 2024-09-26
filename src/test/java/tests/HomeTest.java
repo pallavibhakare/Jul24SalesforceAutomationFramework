@@ -119,7 +119,7 @@ public class HomeTest extends BaseTest{
 		test.get().log(Status.INFO, "Click User menu");
 		Assert.assertTrue(hp.isUserMenuOptionsVisible(), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
 		test.get().log(Status.INFO, "Drop down with "+hp.getUsermenuOptionNames()+" is displayed.");
-		hp.logout(driver);
+		hp.clickLogoutLink(driver);
 		test.get().info("Clicked login button");
 		logger.info("Logout Button Clicked.");
 		Assert.assertTrue(hp.isLoginPage(driver), "Login Page should be displayed.");

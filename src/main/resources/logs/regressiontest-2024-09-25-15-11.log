@@ -1,0 +1,17 @@
+2024-09-25-15:11:24 INFO  ExtentReports instance initialized successfully.
+2024-09-25-15:11:28 DEBUG Username is entered.
+2024-09-25-15:11:29 DEBUG Password is Entered.
+2024-09-25-15:11:30 INFO  'Login' button is clicked
+2024-09-25-15:11:33 INFO  'Home' tab is clicked.
+2024-09-25-15:11:35 INFO  User Name link is clicked
+2024-09-25-15:11:35 INFO  User: Pallavi Bhakare ~ Salesforce - Developer Edition is displayed.
+2024-09-25-15:11:35 INFO  Chilcked on the Edit Icon.
+2024-09-25-15:11:35 INFO  'Edit profile' pop up is available.
+2024-09-25-15:11:35 INFO  Current selected tab is 'Contacts'
+2024-09-25-15:11:35 INFO  Clicked on the 'About' tab
+2024-09-25-15:11:36 INFO  First Name field have focus.
+2024-09-25-15:11:36 DEBUG last name is entered.
+2024-09-25-15:11:37 DEBUG Save Changes.
+2024-09-25-15:11:37 DEBUG Last Name Changed Successfully.
+2024-09-25-15:11:37 INFO  Popup is closed.
+2024-09-25-15:11:37 INFO  Last Name is update in breadcrumb.

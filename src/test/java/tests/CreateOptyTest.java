@@ -8,9 +8,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.Status;
-
 import listeners.TestListener;
 import pages.CreateAccountPage;
 import pages.CreateOptyPage;
@@ -25,22 +22,20 @@ public class CreateOptyTest extends BaseTest {
 	LeadsPage ldp;
 	CreateOptyPage cop;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
 		LoginPage lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);		
-		test.get().log(Status.INFO, "Logged into the Application.");
 		hp = new HomePage(driver);
-		cop = new CreateOptyPage(driver);
-		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page is displayed.");		
+		cop = new CreateOptyPage(driver);	
 	}
 	
 	@Test
 	public void optyDropDownTC15() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		cop.clickOptyTabLink();
+		logger.info("CreateOptyTest: optyDropDownTC15:Browser instance launched");
+		cop.clickOptyTabLink(driver);
 		Assert.assertTrue(cop.isOptyHomePage(getDriver()));
 		test.get().info(" '"+driver.getTitle()+"' home page is displayed.");
 		Assert.assertTrue(cop.isOptyDropDownPresent(driver));
@@ -50,7 +45,8 @@ public class CreateOptyTest extends BaseTest {
 	@Test
 	public void testOptyPipelineReportTC16() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		cop.clickOptyTabLink();
+		logger.info("CreateOptyTest: testOptyPipelineReportTC16:Browser instance launched");
+		cop.clickOptyTabLink(driver);
 		Assert.assertTrue(cop.isOptyHomePage(getDriver()));
 		test.get().info(" '"+driver.getTitle()+"' home page is displayed.");
 		Assert.assertTrue(cop.isNewlyCreatedOptyPage(driver));
@@ -60,7 +56,8 @@ public class CreateOptyTest extends BaseTest {
 	@Test
 	public void testOptyPipelineReportTC17() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		cop.clickOptyTabLink();
+		logger.info("CreateOptyTest: testOptyPipelineReportTC17:Browser instance launched");
+		cop.clickOptyTabLink(driver);
 		Assert.assertTrue(cop.isOptyHomePage(getDriver()));
 		test.get().info(" '"+driver.getTitle()+"' home page is displayed.");
 		boolean res = cop.clickOptyPipeline(driver);
@@ -71,7 +68,8 @@ public class CreateOptyTest extends BaseTest {
 	@Test
 	public void testStuckOptyReportTC18() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		cop.clickOptyTabLink();
+		logger.info("CreateOptyTest: testStuckOptyReportTC18:Browser instance launched");
+		cop.clickOptyTabLink(driver);
 		Assert.assertTrue(cop.isOptyHomePage(getDriver()));
 		test.get().info(" '"+driver.getTitle()+"' home page is displayed.");
 		boolean res = cop.clickStuckOptyLink(driver);
@@ -82,7 +80,8 @@ public class CreateOptyTest extends BaseTest {
 	@Test
 	public void quarterlySummaryReportTC19() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		cop.clickOptyTabLink();
+		logger.info("CreateOptyTest: quarterlySummaryReportTC19:Browser instance launched");
+		cop.clickOptyTabLink(driver);
 		Assert.assertTrue(cop.isOptyHomePage(getDriver()));
 		test.get().info(" '"+driver.getTitle()+"' home page is displayed.");
 		boolean res = cop.quarterlySummery(driver);

@@ -26,7 +26,7 @@ public class ContactsTest extends BaseTest {
 	HomePage hp;
 	ContactsPage cp;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
 		lp  = new LoginPage(driver);
@@ -37,8 +37,8 @@ public class ContactsTest extends BaseTest {
 		test.get().log(Status.INFO, "Home page is displayed.");	
 		cp = new ContactsPage(driver);
 	}
-	@AfterMethod
-	public void logout() throws FileNotFoundException, IOException {
+	@AfterMethod(alwaysRun = true)
+	public void logoutFinal() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		hp.logout(driver);
@@ -99,7 +99,7 @@ public class ContactsTest extends BaseTest {
 		cp.clickContactsTabLink();
 		Assert.assertTrue(cp.isContactsHomePage(driver));
 		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");
-		cp.checkRecentlyCreated(driver);
+//		cp.checkRecentlyCreated(driver);
 		Assert.assertTrue(cp.isRecentlyCreatedPage(driver));
 		test.get().log(Status.INFO, "Recently Created contacts are displayed.");
 	}

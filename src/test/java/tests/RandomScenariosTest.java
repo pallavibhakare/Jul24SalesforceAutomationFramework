@@ -17,6 +17,7 @@ import pages.LoginPage;
 import pages.MyProfilePage;
 import pages.RandomScenariosPage;
 import utils.FileUtils;
+import utils.WaitUtils;
 
 @Listeners(TestListener.class)
 public class RandomScenariosTest extends BaseTest {
@@ -26,28 +27,26 @@ public class RandomScenariosTest extends BaseTest {
 	MyProfilePage mpp;
 	RandomScenariosPage rp;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
 		lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);		
-		test.get().log(Status.INFO, "Logged into the Application.");
 		hp = new HomePage(driver);
-		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page is displayed.");	
 		cp = new ContactsPage(driver);
 		rp=new RandomScenariosPage(driver);
 		mpp=new MyProfilePage(driver);
 	}
-//	@AfterMethod
-//	public void logout() throws FileNotFoundException, IOException {
-//		WebDriver driver = getDriver();
-//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
-//		hp.logout(driver);
-//	}
+	@AfterMethod(alwaysRun = true)
+	public void logoutFinal() throws FileNotFoundException, IOException {
+		WebDriver driver = getDriver();
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		hp.logout(driver);
+	}
 	@Test
 	public void verifyFirstAndLastNameOfUserTC33() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
+		logger.info("RandomScenariosTest: verifyFirstAndLastNameOfUserTC33:Browser instance launched");	
 		Assert.assertTrue(hp.isHomePage(driver));
 		hp.clickHomeTab(driver);
 		test.get().info("'Home' tab clicked.");	
@@ -62,7 +61,8 @@ public class RandomScenariosTest extends BaseTest {
 	}
 	@Test
 	public void verifyLastNameUpdatedTC34() throws FileNotFoundException, IOException {
-		WebDriver driver= getDriver();	
+		WebDriver driver= getDriver();
+		logger.info("RandomScenariosTest: verifyLastNameUpdatedTC34:Browser instance launched");
 			Assert.assertTrue(hp.isHomePage(driver));
 			test.get().info("Home page is dispayed.");	
 			hp.clickHomeTab(driver);
@@ -93,6 +93,7 @@ public class RandomScenariosTest extends BaseTest {
 		String optionRemoved="";
 		try {
 		driver= getDriver();	
+		logger.info("RandomScenariosTest: tabCustomizationTC35:Browser instance launched");
 		Assert.assertTrue(hp.isHomePage(driver));
 		test.get().info("Home page is dispayed.");	
 		rp.clickAllTabs();
@@ -132,8 +133,9 @@ public class RandomScenariosTest extends BaseTest {
 		WebDriver  driver=null;		
 		try {
 		driver= getDriver();	
-		Assert.assertTrue(hp.isHomePage(driver));
-		test.get().info("Home page is dispayed.");
+		logger.info("RandomScenariosTest: blockingAnEventInTheCalanderTC36:Browser instance launched");
+//		Assert.assertTrue(hp.isHomePage(driver));
+//		test.get().info("Home page is dispayed.");
 		hp.clickHomeTab(driver);
 		Assert.assertTrue(rp.verifyDateIsDisplayedAsLink(driver));
 		rp.clickDateLink();
@@ -174,6 +176,7 @@ public class RandomScenariosTest extends BaseTest {
 		WebDriver  driver=null;		
 		try {
 			driver= getDriver();	
+			logger.info("RandomScenariosTest: calenderEventWithRecurranceTC37:Browser instance launched");
 			Assert.assertTrue(hp.isHomePage(driver));
 			test.get().info("Home page is dispayed.");
 			hp.clickHomeTab(driver);

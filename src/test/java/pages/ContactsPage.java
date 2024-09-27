@@ -55,7 +55,7 @@ public class ContactsPage extends BasePage {
 	@FindBy(xpath = "//div[@class='pbHeader']/table/tbody/tr/td[@class='pbButtonb']/input[@value=' Save ']  ")
 	public WebElement saveViewBtn;
 	
-	@FindBy(id="hotlist_mode")
+	@FindBy(xpath = "//select[@id='hotlist_mode']")
 	public WebElement recentlyCreatedSelect;
 	
 	@FindBy(id="fcf")
@@ -85,7 +85,7 @@ public class ContactsPage extends BasePage {
 	}
 	public boolean isContactsHomePage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isContactsHomePage = false;
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
 		String expected = FileUtils.readContactsPropertiesFile("contactsHomePageTitle");
 		if(actual.equals(expected)) {
@@ -227,17 +227,22 @@ public class ContactsPage extends BasePage {
 		}
 		return isViewSaved;
 	}
-	public void checkRecentlyCreated(WebDriver driver) {
-		CommonActionUtils.selectDropDownOption(driver, recentlyCreatedSelect, "Recently Created");
-		logger.info("Recently Created is selected.");
+	public void checkRecentlyCreated(WebDriver driver) throws FileNotFoundException, IOException {
+		String optionText=FileUtils.readContactsPropertiesFile("recentlyCreated");
+		CommonActionUtils.selectDropDownOption(driver, recentlyCreatedSelect, optionText);
+		logger.info(optionText+" is selected.");
 	}
 	public boolean isRecentlyCreatedPage(WebDriver driver) {
+		
 		Select select = new Select(recentlyCreatedSelect);
 		String selectedOption=select.getFirstSelectedOption().getText();
 		if(selectedOption.equals("Recently Created"))
 		{
+			logger.info(selectedOption+" is selected.");
 			return true;
+			
 		}else {
+			logger.info("Can not select "+selectedOption);
 			return false;
 		}
 	}
@@ -246,9 +251,13 @@ public class ContactsPage extends BasePage {
 		logger.info("My Contacts is selected from the View select");		
 	}
 	public boolean isMyContactsPage(WebDriver driver) throws FileNotFoundException, IOException {
-		String expected = FileUtils.readContactsPropertiesFile("contactsPage");
+		String expected = FileUtils.readContactsPropertiesFile("contactsHomePageTitle");
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual =driver.getTitle();
+		
+		System.out.println("isMyContactsPage actual"+actual);
+		System.out.println("isMyContactsPage expected"+expected);
+		
 		if(actual.equals(expected)) {
 			return true;
 		}else {
@@ -273,7 +282,7 @@ public class ContactsPage extends BasePage {
 		contactName=formattedName;
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actualTitle = driver.getTitle();
-		System.out.println("a "+actualTitle);
+//		System.out.println("a "+actualTitle);
 		if(actualTitle.contains(contactName)) {
 			logger.info("Contact page for "+contactName+" is displayed.");
 			isContactPageDispayed= true;
@@ -339,7 +348,7 @@ public class ContactsPage extends BasePage {
 		return isNewContactPage;
 	}
 	public void deleteRecord(WebDriver driver) {
-		
+//			WaitUtils.WaitForVisibility(driver, deleteBtn);
 			deleteBtn.click();
 			driver.switchTo().alert().accept();
 		

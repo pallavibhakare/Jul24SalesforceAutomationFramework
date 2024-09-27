@@ -85,7 +85,7 @@ public class BaseTest {
 		}
 		return driver;
 	}
-	@BeforeSuite
+	@BeforeSuite(alwaysRun = true)
 	public void getReport() {
 		
 		extent = ReportManager.getInstance();
@@ -95,7 +95,7 @@ public class BaseTest {
 	        logger.info("ExtentReports instance initialized successfully.");
 	    }
 	}
-	@AfterSuite
+	@AfterSuite(alwaysRun = true)
 	public void writeReport() {
 		
 		 extent.flush();
@@ -115,7 +115,7 @@ public class BaseTest {
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
-//		 getDriver().quit();
+		 getDriver().quit();
 		
 	}
 	

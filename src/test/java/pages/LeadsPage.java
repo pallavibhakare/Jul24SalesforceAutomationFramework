@@ -38,7 +38,8 @@ public class LeadsPage extends BasePage {
 	@FindBy(xpath = "//td[@id='topButtonRow']/input[@value=' Save ']")
 	public WebElement savebtn; 
 	
-	public void clickLeadsTabLink() {		
+	public void clickLeadsTabLink(WebDriver driver) {	
+		WaitUtils.WaitForVisibility(driver, leads_Tab);
 		leads_Tab.click();
 		logger.info("'Leads' tab is clicked");
 	}

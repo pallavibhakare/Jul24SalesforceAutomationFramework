@@ -82,7 +82,8 @@ public class CreateOptyPage extends BasePage {
 	@FindBy(xpath = "//tr[@class='dataRow even last first']/th/a")
 	public WebElement firstLastRowData; 
 	
-	public void clickOptyTabLink() {		
+	public void clickOptyTabLink(WebDriver driver) {	
+		WaitUtils.WaitForVisibility( driver, createOpty_Tab);
 		createOpty_Tab.click();
 		logger.info("'Opportunities' tab is clicked");
 	}
@@ -110,7 +111,8 @@ public class CreateOptyPage extends BasePage {
 	}
 	public List<String> getOptyDropdownOptionText() {
 
-		List<String> optionNames = new ArrayList<>();		
+		List<String> optionNames = new ArrayList<>();	
+		
 		for(WebElement option :selectOptydropdownOptions) {
 			optionNames.add(option.getText());
 		}
@@ -191,7 +193,7 @@ public class CreateOptyPage extends BasePage {
 	public boolean isNewlyCreatedOptyPage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isNewlyCreatedOptyPage=false;
 		String s= createNewOpty(driver);
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
 		System.out.print("Ac:"+actual);
 		String expected = "Opportunity: "+s+" ~ Salesforce - Developer Edition";

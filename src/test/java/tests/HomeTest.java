@@ -20,7 +20,7 @@ public class HomeTest extends BaseTest{
 	
 	HomePage hp;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
 		
 		WebDriver driver = getDriver();	
@@ -31,6 +31,7 @@ public class HomeTest extends BaseTest{
 	@Test()
 	public void selectUserMenuTC05() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("HomeTest:selectUserMenuTC05:Browser instance launched");	
 		HomePage hp = new HomePage(driver);
 		Assert.assertTrue(hp.isHomePage(driver), "Applications home page must be displayed with logged user Name "+hp.getUserName(driver));
 		Assert.assertTrue(hp.isUserMenuAvailable(), "User Menu drop down should be available.");		
@@ -44,6 +45,7 @@ public class HomeTest extends BaseTest{
 	@Test()
 	public void myProfileOptionTC06() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("HomeTest:myProfileOptionTC06:Browser instance launched");	
 		test.get().log(Status.INFO, "Logged into the Application.");
 		MyProfilePage mp = new MyProfilePage(driver);
 		hp.clickUserMenu(driver);
@@ -70,6 +72,7 @@ public class HomeTest extends BaseTest{
 	@Test()
 	public void selectMySettingTC07() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("HomeTest:selectMySettingTC07:Browser instance launched");	
 		test.get().log(Status.INFO, "Logged into the Application.");
 		HomePage hp = new HomePage(driver);
 		MySettingsPage ms = new MySettingsPage(driver);
@@ -99,6 +102,7 @@ public class HomeTest extends BaseTest{
 	@Test()
 	public void selectDeveloerConsoleTC08() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("HomeTest:selectDeveloerConsoleTC08:Browser instance launched");	
 		test.get().log(Status.INFO, "Logged into the Application.");
 		HomePage hp = new HomePage(driver);
 		hp.clickUserMenu(driver);
@@ -113,6 +117,7 @@ public class HomeTest extends BaseTest{
 	@Test()
 	public void selectLogoutTC09() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("HomeTest:selectLogoutTC09:Browser instance launched");	
 		test.get().log(Status.INFO, "Logged into the Application.");
 		HomePage hp = new HomePage(driver);
 		hp.clickUserMenu(driver);

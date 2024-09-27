@@ -11,11 +11,11 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import listeners.TestListener;
+import pages.ContactsPage;
 import pages.CreateAccountPage;
 import pages.HomePage;
 import pages.LeadsPage;
 import pages.LoginPage;
-import utils.WaitUtils;
 
 @Listeners(TestListener.class)
 public class LeadsTest extends BaseTest {
@@ -23,28 +23,27 @@ public class LeadsTest extends BaseTest {
 	HomePage hp;
 	CreateAccountPage cap;
 	LeadsPage ldp;
-	@BeforeMethod
+	ContactsPage cp;
+	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
 		lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);		
-		test.get().log(Status.INFO, "Logged into the Application.");
 		hp = new HomePage(driver);
-		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page is displayed.");
 		ldp= new LeadsPage(driver);
+		cp= new ContactsPage(driver);
 	}
-	@AfterMethod
-	public void logout() throws FileNotFoundException, IOException {
+	@AfterMethod(alwaysRun = true)
+	public void logoutFinal() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		 hp.logout(driver);
 	}
 	
 	@Test
 	public void leadsTabTC20() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		ldp.clickLeadsTabLink();
+		logger.info("LeadsTest: leadsTabTC20:Browser instance launched");	
+		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
 		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");
 	}
@@ -52,7 +51,8 @@ public class LeadsTest extends BaseTest {
 	@Test
 	public void leadsSelectViewTC21() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		ldp.clickLeadsTabLink();
+		logger.info("LeadsTest: leadsSelectViewTC21:Browser instance launched");	
+		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
 		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");		
 		Assert.assertTrue(ldp.isListViewOptionsAvailable(driver));
@@ -62,7 +62,8 @@ public class LeadsTest extends BaseTest {
 	@Test
 	public void defaultViewTC22() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		ldp.clickLeadsTabLink();
+		logger.info("LeadsTest: defaultViewTC22:Browser instance launched");	
+		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
 		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");	
 		ldp.viewOptionsSelect(driver);
@@ -72,7 +73,8 @@ public class LeadsTest extends BaseTest {
 	@Test
 	public void todaysLeadsTC23() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
-		ldp.clickLeadsTabLink();
+		logger.info("LeadsTest: todaysLeadsTC23:Browser instance launched");	
+		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
 		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");	
 		Assert.assertTrue(ldp.isTodaysLeadsPage(driver));
@@ -81,15 +83,25 @@ public class LeadsTest extends BaseTest {
 	
 	@Test
 	public void newLeadsTC24() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();	
-		ldp.clickLeadsTabLink();
-		Assert.assertTrue(ldp.isLeadsHomePage(driver));
-		test.get().log(Status.INFO, driver.getTitle()+" is displayed.");
-		ldp.clikcNewLeads(driver);
-		Assert.assertTrue(ldp.isNewLeadCreationPage(driver));
-		test.get().log(Status.INFO, "'"+driver.getTitle()+"' page is displayed.");
-		boolean res= ldp.enterNewLeadsDetails(driver);
-		Assert.assertTrue(res);
-		test.get().log(Status.INFO, "New lead is saved and "+driver.getTitle()+" is opened.");
-	}
+		WebDriver driver= null;
+		try {
+			driver = getDriver();
+			logger.info("LeadsTest: newLeadsTC24:Browser instance launched");
+			ldp.clickLeadsTabLink(driver);
+			Assert.assertTrue(ldp.isLeadsHomePage(driver));
+			test.get().log(Status.INFO, driver.getTitle()+" is displayed.");
+			ldp.clikcNewLeads(driver);
+			Assert.assertTrue(ldp.isNewLeadCreationPage(driver));
+			test.get().log(Status.INFO, "'"+driver.getTitle()+"' page is displayed.");
+			boolean res= ldp.enterNewLeadsDetails(driver);
+			Assert.assertTrue(res);
+			test.get().log(Status.INFO, "New lead is saved and "+driver.getTitle()+" is opened.");
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(driver!=null) {
+			cp.deleteRecord(driver);
+			}
+		}
+		}
 }

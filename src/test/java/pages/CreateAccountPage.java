@@ -2,11 +2,16 @@ package pages;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import utils.CommonActionUtils;
 import utils.FileUtils;
@@ -17,10 +22,10 @@ public class CreateAccountPage extends BasePage{
 		super(driver);	
 	}
 	
-	@FindBy(xpath = "//*[@id='Account_Tab']/a")
+	@FindBy(xpath = "//li[@id='Account_Tab']/a")
 	public WebElement accounts_Tab;
 
-	@FindBy(xpath = "//a[contains(text(),'Create New View')]")
+	@FindBy(xpath = "//span[@class='fFooter']/a[contains(text(),'Create New View')]")
 	public WebElement createNewView;
 	
 	@FindBy(xpath = "//a[contains(text(), 'Edit')]")
@@ -32,7 +37,7 @@ public class CreateAccountPage extends BasePage{
 	@FindBy(id = "devname")
 	public WebElement viewUniqueName;
 	
-	@FindBy(name = "fcf")
+	@FindBy(xpath = "//select[@name='fcf']")
 	public WebElement viewDropDown;
 	
 	
@@ -45,9 +50,13 @@ public class CreateAccountPage extends BasePage{
 	@FindBy(xpath = "//select[@id='acc6']")
 	public WebElement selectType;
 	
+	@FindBy(xpath = "//div[@class='pbHeader']/table/tbody/tr/td[@class='pbButtonb']/input[@value=' Save ']")
+	public WebElement saveViewBtn;
+	
+	
 	@FindBy(xpath = "//select[@id='00N2w00000ZLonD']")
 	public WebElement coustomerPriority;
-	@FindBy(name = "save")
+	@FindBy(xpath = "//td[@id='topButtonRow']/input[@value=' Save ']")
 	public WebElement saveBtn;
 	@FindBy(id = "fcol1")
 	public WebElement fieldDropdown;
@@ -59,6 +68,10 @@ public class CreateAccountPage extends BasePage{
 	public WebElement addArrow;
 	@FindBy(id = "colselector_select_0")
 	public WebElement avaiableFields;
+	@FindBy(className = "leftArrowIcon")
+	public WebElement removeArrow;
+	@FindBy(id = "colselector_select_1")
+	public WebElement selectedFields;
 	
 	@FindBy(xpath = "//a[contains(text(),'Merge Accounts')]")
 	public WebElement mergeAccountsLink;
@@ -72,13 +85,13 @@ public class CreateAccountPage extends BasePage{
 	public WebElement radioBtn2;
 	@FindBy(xpath = "//input[@id='cid2']")
 	public WebElement radioBtn3;
-	@FindBy(xpath = "//div[contains(@class,'pbTopButtons')]//input[contains(@title,'Next')]")
+	@FindBy(xpath = "//div[contains(@class,'pbTopButtons')]/input[contains(@title,'Next')]")
 	public WebElement nextBtn;
-	@FindBy(xpath = "//div[@class='pbTopButtons']//input[@title='Merge']")
+	@FindBy(xpath = "//div[@class='pbTopButtons']/input[@title='Merge']")
 	public WebElement mergeBtn;
 	
 	
-	@FindBy(partialLinkText = "Accounts with last activity > 30 days")
+	@FindBy(partialLinkText = "Accounts with last activity")
 	public WebElement report_accWithLastActivity;
 	@FindBy(id = "ext-comp-1042")
 	public WebElement fromDateInput;
@@ -102,10 +115,13 @@ public class CreateAccountPage extends BasePage{
 	
 	@FindBy(id = "ext-gen49")
 	public WebElement saveUnsavedReportBtn;
-	
-	
+
 	@FindBy(id = "saveReportDlg")
 	public WebElement reportDlg;
+	
+	@FindBy(xpath ="//td[@class='pbButton']/input[@value=' New ']")
+	public WebElement newBtn;
+	
 	
 	@FindBy(id = "ext-gen27")
 	public WebElement reportForm;
@@ -124,20 +140,35 @@ public class CreateAccountPage extends BasePage{
 	
 	@FindBy(id = "ext-gen172")
 	public WebElement spinner2;
-	@FindBy(id = "dlgSaveReport")
-	public WebElement enableSave;
+	@FindBy(id = "dlgSaveAndRun")
+	public WebElement enableSaveAndRun;
+	
+	@FindBy(xpath = "//div[@class='controls']/div/a[contains(text(), 'Delete')]")
+	public WebElement deleteNewlyCreateView;
+	
 	
 	
 	public void clickAccountsLink(WebDriver driver) {
+		WaitUtils.explicitlyWaitForClickableElement(driver, accounts_Tab);
 		accounts_Tab.click();
+		
+		try {
+			accounts_Tab.click(); // Attempt to click the element
+	    } catch (StaleElementReferenceException e) {
+	        // Element is stale, re-locate and click again
+	    	accounts_Tab = driver.findElement(By.xpath("//li[@id='Account_Tab']/a[contains(text(),'Accounts')]"));
+	    	accounts_Tab.click();
+	    }
 		logger.info("'Accounts' link is clicked.");
 	}
 	
 	public boolean isAccountsPage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isAccountsPage = false;		
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actualAccountsPageTitle = driver.getTitle();
+		System.out.println("actualAccountsPageTitle "+actualAccountsPageTitle);
 		String expectedAccountsPageTitle = FileUtils.readAccountsPagePropertiesFile("accountsPageTitle");
+		System.out.println("expectedAccountsPageTitle "+expectedAccountsPageTitle);
 		if(actualAccountsPageTitle.equals(expectedAccountsPageTitle)) {
 			isAccountsPage = true;
 			logger.info("Accounts Page is displayed.");
@@ -148,27 +179,30 @@ public class CreateAccountPage extends BasePage{
 		return isAccountsPage;
 	}
 	public String createNewView(WebDriver driver) throws FileNotFoundException, IOException {
+		WaitUtils.explicitlyWaitForClickableElement(driver, createNewView);
 		createNewView.click();
 		logger.info("'Create New View' link is clicked.");
 		viewName.clear();
-		String vName = FileUtils.readAccountsPagePropertiesFile("setViewName");
+		
+		String vName = FileUtils.readAccountsPagePropertiesFile("setCreateNewViewName");
 		viewName.sendKeys(vName);
 		logger.info("'View Name' is entered.");
 		viewUniqueName.clear();
 		viewUniqueName.click();
 		logger.info("'Unique View Name' is generated.");
-		CommonActionUtils.mouseHover(driver, saveBtn);
-		saveBtn.click();
+		CommonActionUtils.mouseHover(driver, saveViewBtn);
+		saveViewBtn.click();
 		logger.info("Saved Newly created view.");
 		return vName;
 	} 
-	public boolean isNewViewAddedInDropdown(WebDriver driver) throws FileNotFoundException, IOException {
+	public boolean isNewViewAddedInDropdown(WebDriver driver, String name) throws FileNotFoundException, IOException {
 		boolean isNewViewAddedToAccountViewList = false;
+		WaitUtils.WaitForVisibility(driver, viewDropDown);
 		Select select = new Select(viewDropDown);
 		WebElement selectedOption = select.getFirstSelectedOption();
 		String selectedText = selectedOption.getText();
-		String vName = createNewView(driver);
-		if(vName.equals(selectedText)) {
+		
+		if(name.equals(selectedText)) {
 			isNewViewAddedToAccountViewList = true;
 			logger.info("The default selected option is "+selectedText+"!");
 		}else {
@@ -180,7 +214,6 @@ public class CreateAccountPage extends BasePage{
 	public void selectViewName(WebDriver driver) {
 		Select dropdown = new Select(viewDropDown);
 		dropdown.selectByIndex(3);
-		
 		edit.click();
 	} 
 	public boolean isEditViewPage(WebDriver driver) throws FileNotFoundException, IOException {
@@ -202,7 +235,7 @@ public class CreateAccountPage extends BasePage{
 	}
 
 	public void editView(WebDriver driver) throws FileNotFoundException, IOException {
-//		viewName.clear();
+		viewName.clear();
 		viewName.sendKeys(FileUtils.readAccountsPagePropertiesFile("newViewName"));
 		fieldDropdown.click();
 		Select accountName =  new Select(fieldDropdown);
@@ -211,13 +244,24 @@ public class CreateAccountPage extends BasePage{
 		operatorContains.selectByIndex(3);
 		valueInput.clear();
 		valueInput.sendKeys("a");
+		avaiableFields.click();
 		Select available =  new Select(avaiableFields);
-		available.selectByVisibleText("Last Activity");
+		available.selectByVisibleText("Last Activity");		
 		addArrow.click();
-		WaitUtils.WaitForVisibility(driver, saveBtn);
-		saveBtn.click();		
+		WaitUtils.WaitForVisibility(driver, saveViewBtn);
+		saveViewBtn.click();		
 	}
-
+	public void editViewRemove(WebDriver driver) throws FileNotFoundException, IOException {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    wait.until(ExpectedConditions.elementToBeClickable(edit));
+		edit.click();
+		selectedFields.click();
+		Select selected =  new Select(selectedFields);
+		selected.selectByVisibleText("Last Activity");
+		removeArrow.click();
+		WaitUtils.WaitForVisibility(driver, saveViewBtn);
+		saveViewBtn.click();		
+	}
 	public boolean validateEditAccount(WebDriver driver) throws FileNotFoundException, IOException {
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actualPageTitle = driver.getTitle();
@@ -233,9 +277,9 @@ public class CreateAccountPage extends BasePage{
 		String accountinitialsToMerge = FileUtils.readAccountsPagePropertiesFile("accountinitialsToMerge");
 		inputTextForFindAccount.sendKeys(accountinitialsToMerge);
 		findAccount.click();
-		for(int i=0; i<3; i++) {
-			driver.findElement(By.xpath("//input[@id='cid"+i+"']")).click();
-		}
+		radioBtn1.click();
+		radioBtn2.click();
+		radioBtn3.click();
 		nextBtn.click();
 		if(isMergeAccountsPage(driver)) {
 			logger.debug("Merge Accounts Step 2 page is displayed with selected accounts details to merge");
@@ -263,13 +307,16 @@ public class CreateAccountPage extends BasePage{
 	}
 
 	public boolean isUnsavedReportPage(WebDriver driver) throws FileNotFoundException, IOException {
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
+		System.out.println("actual :"+actual);
 		String expected = FileUtils.readAccountsPagePropertiesFile("unsavedReportsPageTitle");
+		System.out.println("expected :"+expected);
+		
 		return actual.equals(expected);			
 	}
 
-	public void selectReportOptions(WebDriver driver) {
+	public void selectReportOptions(WebDriver driver) throws FileNotFoundException, IOException {
 		
 		fromDateInput.clear();
 		fromDate.click();
@@ -281,21 +328,22 @@ public class CreateAccountPage extends BasePage{
 		toTodayBtn.click();
 		logger.info("to Date is selected.");
 		saveUnsavedReportBtn.click();
-		logger.info("Clicked 'Save' button.");
-		int count=0;
-		
-			logger.info("Save Report dialog is open.");			
-			reportName.sendKeys("r"+count++);
+//		logger.info("Clicked 'Save' button.");
+//		
+//		
+//			logger.info("Save Report dialog is open.");	
+//			
+			reportName.sendKeys(FileUtils.readAccountsPagePropertiesFile("unsavedReportName"));
 			logger.info("Report name entered.");	
 			reportUniqueName.click();
 			logger.info("Unique Report name generated.");
 			report_desc.click();
 //			WaitUtils.explicitlyWaitForClickableElement(driver, saveReportDlg);
-//			if(enableSave.isEnabled()) {
+			if(enableSaveAndRun.isEnabled()) {
 ////				CommonActionUtils.mouseHover(driver, saveReportDlg);
-//				WaitUtils.WaitForVisibility(driver, saveAndRunReportDlg);
+				WaitUtils.explicitlyWaitForClickableElement(driver, saveAndRunReportDlg);
 				saveAndRunReportDlg.click();
-//			}
+			}
 		
 		
 	}
@@ -306,7 +354,28 @@ public class CreateAccountPage extends BasePage{
 		System.out.println("actual:"+actual);
 		String expected = FileUtils.readAccountsPagePropertiesFile("reportsGeneratedPageTitle");
 		System.out.println("expected:"+expected);
+		
+//		actual:Unsaved Report ~ Salesforce - Developer Edition
+//		it is not clicking saveandRun button from dialog
+//		expected:R07 ~ Salesforce - Developer Edition 
 		return actual.contains(expected);
+	}
+
+	public void createNewAccountNameWithAr(WebDriver driver, String ar) throws FileNotFoundException, IOException {				
+		for(int i=0; i<3; i++) {
+			accounts_Tab.click();
+			newBtn.click();
+			String name =ar+i;
+//			System.out.println(name);
+			accountName.sendKeys(name);
+			saveBtn.click();
+		}		
+	}
+
+	public void deleteNewViewAccount(WebDriver driver) {
+		WaitUtils.WaitForVisibility(driver, deleteNewlyCreateView);
+		deleteNewlyCreateView.click();
+		driver.switchTo().alert().accept();
 	}
 	
 	

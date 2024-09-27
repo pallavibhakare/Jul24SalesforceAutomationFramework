@@ -44,9 +44,10 @@ public class LoginTest extends BaseTest{
 	@Test()
 	public void loginToSalesfoceTC02() throws FileNotFoundException, IOException {				
 		WebDriver driver = getDriver();
+		logger.info("LoginTest:loginToSalesfoceTC02:Browser instance launched");	
 		LoginPage lp = new LoginPage(driver);
 		HomePage hp = new HomePage(driver);
-		logger.info("loginToSalesfoceTC02: Login Page Launched.");
+		
 		String expectedUserName = FileUtils.readLoginPropertiesFile("valid.username");
 		lp.enterUsername();
 		test.get().info("Username Entered.");
@@ -98,6 +99,7 @@ public class LoginTest extends BaseTest{
 	@Test()
 	public void forgetPasswordTC04A() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();
+		logger.info("LoginTest:forgetPasswordTC04A:Browser instance launched");	
 		LoginPage lp = new LoginPage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login Page");
 		test.get().log(Status.INFO , "On Login Page");	
@@ -112,6 +114,7 @@ public class LoginTest extends BaseTest{
 	@Test()
 	public void validateLoginErrorMessageTC04B() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
+		logger.info("LoginTest:validateLoginErrorMessageTC04B:Browser instance launched");	
 		LoginPage lp = new LoginPage(driver);
 		Assert.assertTrue(lp.isLoginPage(driver), "Verify Login Page should be displayed.");
 		test.get().log(Status.INFO, "Login Page is displayed.");

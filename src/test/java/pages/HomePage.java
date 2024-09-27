@@ -78,7 +78,7 @@ public class HomePage extends BasePage {
 	}
 	public void clickUserMenu(WebDriver driver) {
 //		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
-		WaitUtils.WaitForVisibility(driver, usersNavLabel);
+//		WaitUtils.WaitForVisibility(driver, usersNavLabel);
 		usersNavLabel.click();
 		logger.info("Clicked on User Menu");
 	}
@@ -107,7 +107,7 @@ public class HomePage extends BasePage {
 	 * @return boolean true if all options are verified
 	 * **/
 	public boolean verifyUserMenuOptions() throws FileNotFoundException, IOException {
-		boolean isUserMenuOptionsVerified = true;
+		boolean isUserMenuOptionsVerified = false;
 		List<String> actualOptionNames = getUsermenuOptionNames();
 		List<String> expectedOptionNames = Arrays.asList(FileUtils.readHomepagePropertiesFile("usermenu.options").split(","));
 		if(actualOptionNames.equals(expectedOptionNames)) {
@@ -132,7 +132,7 @@ public class HomePage extends BasePage {
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String expectedHomepageTitle = FileUtils.readHomepagePropertiesFile("homePageTitle");
 		String actualHomepageTitle = driver.getTitle();
-		WaitUtils.explicitlyWaitForClickableElement(driver, usersNavLabel);
+//		WaitUtils.explicitlyWaitForClickableElement(driver, usersNavLabel);
 		if(actualHomepageTitle.equals(expectedHomepageTitle)) {
 			return true;
 		}else {
@@ -206,6 +206,7 @@ public class HomePage extends BasePage {
 	    // driver.quit();
 	}
 	public void clickHomeTab(WebDriver driver) {
+		WaitUtils.WaitForVisibility(driver, homeTab);
 		homeTab.click();
 		logger.info("'Home' tab is clicked.");
 		

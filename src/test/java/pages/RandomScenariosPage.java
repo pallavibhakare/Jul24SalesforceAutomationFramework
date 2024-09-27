@@ -34,7 +34,7 @@ public class RandomScenariosPage extends BasePage {
 	@FindBy(xpath = "//td[@class='bCustomize']/input[@value='Customize My Tabs']")
 	public WebElement customizeMyTabs;
 	
-	@FindBy(id = "duel_select_1")
+	@FindBy(xpath = "//select[@id='duel_select_1']")
 	public WebElement selectTabsDropdown;
 	
 	@FindBy(id = "duel_select_0_left")
@@ -45,7 +45,7 @@ public class RandomScenariosPage extends BasePage {
 	@FindBy(xpath = "//img[@class='rightArrowIcon']")
 	public WebElement addBtn;
 	
-	@FindBy(id = "duel_select_0")
+	@FindBy(xpath ="//select[@id='duel_select_0']")
 	public WebElement availableTabsDropdown;
 	
 	@FindBy(id = "tabBar")
@@ -154,6 +154,7 @@ public class RandomScenariosPage extends BasePage {
 	}
 	public boolean removedToSelectedDropdownCheck(WebDriver driver, String optionRemoved) {
 		
+		availableTabsDropdown.click();
 		Select dd= new Select(availableTabsDropdown);
 		boolean optionFound = false;
 		List<WebElement> options =dd.getOptions();
@@ -194,6 +195,7 @@ public class RandomScenariosPage extends BasePage {
 	}
 	public boolean verifyDateIsDisplayedAsLink(WebDriver driver) {
 
+		WaitUtils.WaitForVisibility(driver, dateLink);
 		 boolean isDisplayed = dateLink.isDisplayed();
 	     boolean isLink = dateLink.getTagName().equals("a");
 	        
@@ -398,16 +400,12 @@ public class RandomScenariosPage extends BasePage {
          
             // Loop through the week to check for blocked events
             for (LocalDate date = today; date.isBefore(endOfWeek.plusDays(1)); date = date.plusDays(1)) {
-                String dateStr = date.format(formatter);
-                //System.out.println("dateStr"+dateStr);
-                // Locate blocked events by date
-//                List<WebElement> blockedEvents = driver.findElements(By.xpath("//a[contains(@class, 'blocked-event-class') and text()='" + dateStr + "']")); 
+                String dateStr = date.format(formatter); 
                 if (!blockedEvents.isEmpty()) {
                 	logger.info("Blocked events found for date: " + dateStr);
                     return true; // Blocked event found
                 }
             }
-
             return false; // No blocked events found
         } catch (Exception e) {
             // Handle exceptions (e.g., element not found, not clickable)

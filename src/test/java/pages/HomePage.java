@@ -79,13 +79,17 @@ public class HomePage extends BasePage {
 	public void clickUserMenu(WebDriver driver) {
 //		WaitUtils.explicitWaitForElementsVisibility(driver, usersNavLabel);
 //		WaitUtils.WaitForVisibility(driver, usersNavLabel);
-		usersNavLabel.click();
-		logger.info("Clicked on User Menu");
+		WaitUtils.explicitlyWaitForClickableElement(driver, usersNavLabel);
+		if(usersNavLabel.isDisplayed()) {
+			usersNavLabel.click();
+			logger.info("Clicked on User Menu");
+		}
 	}
 	public boolean isUserMenuAvailable() {
 		return usersNavLabel.isDisplayed();
 	}
-	public boolean isUserMenuOptionsVisible() {
+	public boolean isUserMenuOptionsVisible(WebDriver driver) {
+		WaitUtils.WaitForVisibility(driver, userNav_menuItems);
 		return userNav_menuItems.isDisplayed();
 	}
 	public List<String> getUsermenuOptionNames() {
@@ -216,9 +220,15 @@ public class HomePage extends BasePage {
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actualHomepageTitle = driver.getTitle();	
 		String expectedHomepageTitle = FileUtils.readHomepagePropertiesFile("homeTabPage");
+		System.out.println("actual home title:"+actualHomepageTitle);
+		System.out.println("Expected home title:"+expectedHomepageTitle);
+		
 		if(actualHomepageTitle.equals(expectedHomepageTitle)) {
+			logger.info("Home Page is displayed.");
 			return true;
+			
 		}else {
+			logger.info("Can not displayed Home page.");
 			return false;
 		}		
 		

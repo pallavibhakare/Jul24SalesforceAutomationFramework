@@ -34,7 +34,7 @@ public class CreateOptyPage extends BasePage {
 	@FindBy(xpath = "//li/a[contains(text(),'Stuck Opportunities')]")
 	public WebElement stuckOpty; 
 	
-	@FindBy(id = "quarter_q")
+	@FindBy(xpath = "//select[@id='quarter_q']")
 	public WebElement intervalSelect; 
 	@FindBy(id = "open")
 	public WebElement includeSelect; 
@@ -193,7 +193,7 @@ public class CreateOptyPage extends BasePage {
 	public boolean isNewlyCreatedOptyPage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isNewlyCreatedOptyPage=false;
 		String s= createNewOpty(driver);
-//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
 		System.out.print("Ac:"+actual);
 		String expected = "Opportunity: "+s+" ~ Salesforce - Developer Edition";
@@ -234,7 +234,9 @@ public class CreateOptyPage extends BasePage {
 		boolean isReportPage= false;
 		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
+		System.out.println("Actual Opty report title:"+actual);
 		String expected = FileUtils.readCreateOptyPagePropertiesFile("quarterlySummaryPageTitle");
+		
 		if(actual.equals(expected)) {
 			isReportPage= true;
 			logger.info("Report page with Opportunities thar satisfies the search critera is displayed.");

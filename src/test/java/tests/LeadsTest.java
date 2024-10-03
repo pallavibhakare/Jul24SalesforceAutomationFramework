@@ -24,9 +24,10 @@ public class LeadsTest extends BaseTest {
 	CreateAccountPage cap;
 	LeadsPage ldp;
 	ContactsPage cp;
+	static WebDriver driver = null;
 	@BeforeMethod(alwaysRun = true)
 	public void login() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();	
+		driver = getDriver();	
 		lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);		
 		hp = new HomePage(driver);
@@ -35,13 +36,13 @@ public class LeadsTest extends BaseTest {
 	}
 	@AfterMethod(alwaysRun = true)
 	public void logoutFinal() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();
+		driver = getDriver();
 		 hp.logout(driver);
 	}
 	
 	@Test
 	public void leadsTabTC20() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();	
+		driver = getDriver();	
 		logger.info("LeadsTest: leadsTabTC20:Browser instance launched");	
 		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
@@ -61,7 +62,7 @@ public class LeadsTest extends BaseTest {
 	
 	@Test
 	public void defaultViewTC22() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();	
+		 driver = getDriver();	
 		logger.info("LeadsTest: defaultViewTC22:Browser instance launched");	
 		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));
@@ -72,7 +73,7 @@ public class LeadsTest extends BaseTest {
 	}
 	@Test
 	public void todaysLeadsTC23() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();	
+		 driver = getDriver();	
 		logger.info("LeadsTest: todaysLeadsTC23:Browser instance launched");	
 		ldp.clickLeadsTabLink(driver);
 		Assert.assertTrue(ldp.isLeadsHomePage(driver));

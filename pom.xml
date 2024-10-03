@@ -5,6 +5,7 @@
    <version>0.0.1-SNAPSHOT</version>
   <properties>
 	  <log4jversion>2.18.0</log4jversion>
+	  <cucumberversion>7.19.0</cucumberversion>
   </properties>
   <dependencies>
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -37,12 +38,39 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4jversion}</version>
-		</dependency>
-		<dependency>
+	</dependency>
+	<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4jversion}</version>
-		</dependency>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-java</artifactId>
+	    <version>${cucumberversion}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-junit</artifactId>
+	    <version>${cucumberversion}</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.11.1</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-testng</artifactId>
+	    <version>${cucumberversion}</version>
+	</dependency>
+
+
 
   </dependencies>
 </project>

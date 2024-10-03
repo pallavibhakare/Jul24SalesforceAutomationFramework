@@ -29,6 +29,7 @@ import utils.ReportManager;
 
 public class BaseTest {
 
+	public static WebDriver driver=null;
 	private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
 	public static ExtentReports extent;
 	public static ThreadLocal<ExtentTest> test = new ThreadLocal<ExtentTest>();
@@ -86,8 +87,7 @@ public class BaseTest {
 		return driver;
 	}
 	@BeforeSuite(alwaysRun = true)
-	public void getReport() {
-		
+	public void getReport() {		
 		extent = ReportManager.getInstance();
 	    if (extent == null) {
 	        logger.error("Failed to initialize ExtentReports instance.");
@@ -108,7 +108,7 @@ public class BaseTest {
         test.set(extent.createTest(mName.getName()));
         
 		setDriver(browserName, headLess);
-		WebDriver driver = getDriver();
+		driver = getDriver();
 		driver.navigate().to(FileUtils.readLoginPropertiesFile("url"));		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 	}

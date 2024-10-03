@@ -1,0 +1,464 @@
+2024-09-30-09:42:11 INFO  ExtentReports instance initialized successfully.
+2024-09-30-09:42:15 INFO  checkRememberMeTC03: Login page launched.
+2024-09-30-09:42:15 INFO  LoginTest:loginErrMsgTC01:Browser instance launched
+2024-09-30-09:42:15 INFO  Login Page launched
+2024-09-30-09:42:15 INFO  LoginTest:forgetPasswordTC04A:Browser instance launched
+2024-09-30-09:42:16 INFO  Login Page is displayed.
+2024-09-30-09:42:17 INFO  Login Page is displayed.
+2024-09-30-09:42:17 DEBUG Username is entered.
+2024-09-30-09:42:17 DEBUG Username is entered.
+2024-09-30-09:42:17 INFO  'Forget Password' link is cliked.
+2024-09-30-09:42:18 DEBUG Password is Entered.
+2024-09-30-09:42:18 INFO  Checked Remember Me checkbox.
+2024-09-30-09:42:18 INFO  'Login' button is clicked
+2024-09-30-09:42:18 INFO  'Continue' button is cliked.
+2024-09-30-09:42:18 INFO   Password reset link is sent.
+2024-09-30-09:42:20 INFO  'Login' button is clicked
+2024-09-30-09:42:22 INFO  Clicked on User Menu
+2024-09-30-09:42:22 INFO  User menu Clicked
+2024-09-30-09:42:22 INFO  LoginTest:loginToSalesfoceTC02:Browser instance launched
+2024-09-30-09:42:22 INFO  LoginTest:validateLoginErrorMessageTC04B:Browser instance launched
+2024-09-30-09:42:22 INFO  Login Page is displayed.
+2024-09-30-09:42:23 DEBUG Username is entered.
+2024-09-30-09:42:23 DEBUG Password is Entered.
+2024-09-30-09:42:24 DEBUG Wrong username is entered.
+2024-09-30-09:42:24 INFO  Username entered.
+2024-09-30-09:42:25 DEBUG Wrong Password is Entered.
+2024-09-30-09:42:25 INFO  Password entered.
+2024-09-30-09:42:25 INFO  Login Page is displayed.
+2024-09-30-09:42:25 INFO  Remember Me is checked.
+2024-09-30-09:42:27 INFO  'Login' button is clicked
+2024-09-30-09:42:29 INFO  'Login' button is clicked
+2024-09-30-09:42:32 DEBUG Username is entered.
+2024-09-30-09:42:33 DEBUG Username is entered.
+2024-09-30-09:42:33 DEBUG Password is Entered.
+2024-09-30-09:42:33 DEBUG Password is Entered.
+2024-09-30-09:42:34 INFO  'Login' button is clicked
+2024-09-30-09:42:34 INFO  HomeTest:selectDeveloerConsoleTC08:Browser instance launched
+2024-09-30-09:42:35 DEBUG Username is entered.
+2024-09-30-09:42:35 DEBUG Password is Entered.
+2024-09-30-09:42:37 INFO  'Login' button is clicked
+2024-09-30-09:42:37 INFO  HomeTest:myProfileOptionTC06:Browser instance launched
+2024-09-30-09:42:37 INFO  Clicked on User Menu
+2024-09-30-09:42:38 INFO  Clicked on User Menu
+2024-09-30-09:42:39 INFO  'Login' button is clicked
+2024-09-30-09:42:39 INFO  HomeTest:selectLogoutTC09:Browser instance launched
+2024-09-30-09:42:39 INFO  Clicked on User Menu
+2024-09-30-09:42:40 INFO  Logout Button Clicked.
+2024-09-30-09:42:42 INFO  Login | Salesforce page is opened.
+2024-09-30-09:42:42 INFO  Chilcked on the Edit Icon.
+2024-09-30-09:42:43 INFO  'Edit profile' pop up is available.
+2024-09-30-09:42:43 INFO  Clicked on the 'About' tab
+2024-09-30-09:42:43 DEBUG last name is entered.
+2024-09-30-09:42:44 DEBUG Username is entered.
+2024-09-30-09:42:44 DEBUG Save Changes.
+2024-09-30-09:42:44 DEBUG Password is Entered.
+2024-09-30-09:42:45 DEBUG Last Name Changed Successfully.
+2024-09-30-09:42:45 INFO  Post link is clicked.
+2024-09-30-09:42:45 INFO  Post message is entered.
+2024-09-30-09:42:45 INFO  'Login' button is clicked
+2024-09-30-09:42:45 INFO  HomeTest:selectMySettingTC07:Browser instance launched
+2024-09-30-09:42:46 DEBUG Post is shared.
+2024-09-30-09:42:46 DEBUG Clicked on File link.
+2024-09-30-09:42:46 DEBUG Clicked 'Upload a file from your computer'.
+2024-09-30-09:42:46 DEBUG File is selected to upload
+2024-09-30-09:42:47 INFO  File is shared.
+2024-09-30-09:42:47 INFO  Clicked on User Menu
+2024-09-30-09:42:48 DEBUG Username is entered.
+2024-09-30-09:42:48 DEBUG Password is Entered.
+2024-09-30-09:42:48 DEBUG Clicked on 'Add Photo'.
+2024-09-30-09:42:49 INFO  'Login' button is clicked
+2024-09-30-09:42:49 INFO  HomeTest:selectUserMenuTC05:Browser instance launched
+2024-09-30-09:42:49 INFO  Clicked on 'My Settings'.
+2024-09-30-09:42:49 INFO  'Personal' tab is clicked from My Settings.
+2024-09-30-09:42:50 DEBUG Photo is selected to upload.
+2024-09-30-09:42:50 INFO  'Login History' tab is clicked from 'Personal' tab.
+2024-09-30-09:42:50 INFO  'Download login history' link is clicked.
+2024-09-30-09:42:50 INFO  File downloaded successfully.
+2024-09-30-09:42:51 INFO  Clicked on Display and Layouts
+2024-09-30-09:42:52 INFO  Clicked on Customize Tabs
+2024-09-30-09:42:52 INFO  Clicked on User Menu
+2024-09-30-09:42:53 INFO  Selected 'Salesforce Chatter' option from 'Custom App'
+2024-09-30-09:42:53 INFO  User menu options '[My Profile, My Settings, Developer Console, Switch to Lightning Experience, Logout]' is displayed
+2024-09-30-09:42:59 DEBUG Username is entered.
+2024-09-30-09:43:00 DEBUG Password is Entered.
+2024-09-30-09:43:03 INFO  'Login' button is clicked
+2024-09-30-09:43:03 INFO  CreateAccountTest: createAccountReportTC14 :Browser instance launched
+2024-09-30-09:43:06 INFO  'Accounts' link is clicked.
+2024-09-30-09:43:06 INFO  Accounts Page is displayed.
+2024-09-30-09:43:09 DEBUG Unsaved Reports page is displayed.
+2024-09-30-09:43:09 INFO  from Date is selected.
+2024-09-30-09:43:09 INFO  to Date is selected.
+2024-09-30-09:43:10 INFO  Report name entered.
+2024-09-30-09:43:10 INFO  Unique Report name generated.
+2024-09-30-09:43:13 INFO  Selected 'Reports' option from 'Available  Tabs'.
+2024-09-30-09:43:13 INFO  Clicked on Add Arrow to move to selected Tabs
+2024-09-30-09:43:13 DEBUG Photo is cropped to upload.
+2024-09-30-09:43:14 INFO  'Email' tab is clicked from 'My Settings'.
+2024-09-30-09:43:15 INFO  'My Email Settings' tab is clicked from 'Email' tab.
+2024-09-30-09:43:15 INFO  'Email Name' is entered.
+2024-09-30-09:43:15 INFO  'Automatic Bcc' radio button is clicked.
+2024-09-30-09:43:15 DEBUG Username is entered.
+2024-09-30-09:43:15 DEBUG Password is Entered.
+2024-09-30-09:43:16 INFO  'My Email Settings' are saved.
+2024-09-30-09:43:16 INFO  'Calender & Reminders' is Clicked.
+2024-09-30-09:43:16 INFO  'Login' button is clicked
+2024-09-30-09:43:17 INFO  'Activity Reminders' is Clicked.
+2024-09-30-09:43:17 INFO  'Open a Test Reminder' is Clicked.
+2024-09-30-09:43:18 INFO  'Reminders' window is open.
+2024-09-30-09:43:19 INFO  'Accounts' link is clicked.
+2024-09-30-09:43:19 INFO  Accounts Page is displayed.
+2024-09-30-09:43:20 INFO  'Create New View' link is clicked.
+2024-09-30-09:43:20 INFO  'View Name' is entered.
+2024-09-30-09:43:21 INFO  'Unique View Name' is generated.
+2024-09-30-09:43:22 INFO  Saved Newly created view.
+2024-09-30-09:43:22 DEBUG Username is entered.
+2024-09-30-09:43:22 INFO  The default selected option is Rani!
+2024-09-30-09:43:23 DEBUG Password is Entered.
+2024-09-30-09:43:26 INFO  'Login' button is clicked
+2024-09-30-09:43:26 INFO  CreateAccountTest: editViewTC12:Browser instance launched
+2024-09-30-09:43:27 DEBUG Username is entered.
+2024-09-30-09:43:27 DEBUG Password is Entered.
+2024-09-30-09:43:27 INFO  'Login' button is clicked
+2024-09-30-09:43:27 INFO  CreateAccountTest: mergeAccountsTC13 :Browser instance launched
+2024-09-30-09:43:28 INFO  'Accounts' link is clicked.
+2024-09-30-09:43:28 INFO  Accounts Page is displayed.
+2024-09-30-09:43:30 INFO  'Accounts' link is clicked.
+2024-09-30-09:43:30 INFO  Accounts Page is displayed.
+2024-09-30-09:43:34 DEBUG Merge Accounts Step 2 page is displayed with selected accounts details to merge
+2024-09-30-09:43:34 DEBUG Merge confirmtion is is accepted through popup.
+2024-09-30-09:43:34 INFO  Accounts Page is displayed.
+2024-09-30-09:43:35 DEBUG Photo is Uploaded Successfully.
+2024-09-30-09:43:46 DEBUG Username is entered.
+2024-09-30-09:43:47 DEBUG Password is Entered.
+2024-09-30-09:43:48 INFO  'Login' button is clicked
+2024-09-30-09:43:48 INFO  CreateOptyTest: optyDropDownTC15:Browser instance launched
+2024-09-30-09:43:50 INFO  'Opportunities' tab is clicked
+2024-09-30-09:43:50 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-30-09:43:50 INFO  Opportunities drop down is present.
+2024-09-30-09:43:50 DEBUG Username is entered.
+2024-09-30-09:43:50 DEBUG Password is Entered.
+2024-09-30-09:43:51 INFO  'Login' button is clicked
+2024-09-30-09:43:51 INFO  CreateOptyTest: quarterlySummaryReportTC19:Browser instance launched
+2024-09-30-09:43:53 INFO  'Opportunities' tab is clicked
+2024-09-30-09:43:53 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-30-09:43:54 DEBUG Username is entered.
+2024-09-30-09:43:54 INFO  'Current and Next 3 FQ' is selected from Interval
+2024-09-30-09:43:54 DEBUG Password is Entered.
+2024-09-30-09:43:55 INFO  'Open Opportunities' is selected from Include
+2024-09-30-09:43:55 INFO  'Run Report' button is clicked
+2024-09-30-09:43:55 INFO  'Login' button is clicked
+2024-09-30-09:43:55 INFO  CreateOptyTest: testOptyPipelineReportTC16:Browser instance launched
+2024-09-30-09:43:57 INFO  'Opportunities' tab is clicked
+2024-09-30-09:43:57 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-30-09:43:58 INFO  'New' opportunity button is clicked.
+2024-09-30-09:43:58 DEBUG 'Opportunity Edit: New Opportunity ~ Salesforce - Developer Edition' page is displayed.
+2024-09-30-09:43:58 INFO  'Opportunity Name' is entered.
+2024-09-30-09:43:59 INFO  A is entered in search input.
+2024-09-30-09:43:59 INFO  'Go!' button is clicked.
+2024-09-30-09:44:00 INFO  First row data is selected.
+2024-09-30-09:44:02 INFO  Saved new opportunity.
+2024-09-30-09:44:02 INFO  New opportunity page is displayed with opportunity details.
+2024-09-30-09:44:08 DEBUG Username is entered.
+2024-09-30-09:44:08 DEBUG Password is Entered.
+2024-09-30-09:44:09 INFO  'Login' button is clicked
+2024-09-30-09:44:09 INFO  CreateOptyTest: testOptyPipelineReportTC17:Browser instance launched
+2024-09-30-09:44:11 INFO  'Opportunities' tab is clicked
+2024-09-30-09:44:11 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-30-09:44:12 INFO  'Opportunity Pipeline' link is clicked.
+2024-09-30-09:44:12 DEBUG 'Opportunity Pipeline ~ Salesforce - Developer Edition' page is displayed.
+2024-09-30-09:44:15 DEBUG Username is entered.
+2024-09-30-09:44:15 DEBUG Password is Entered.
+2024-09-30-09:44:16 INFO  'Login' button is clicked
+2024-09-30-09:44:16 INFO  CreateOptyTest: testStuckOptyReportTC18:Browser instance launched
+2024-09-30-09:44:17 INFO  'Opportunities' tab is clicked
+2024-09-30-09:44:18 INFO   'Opportunities: Home ~ Salesforce - Developer Edition' home page is displayed.
+2024-09-30-09:44:18 INFO  Report page with Stuck opportunity page is displayed.
+2024-09-30-09:44:21 DEBUG Username is entered.
+2024-09-30-09:44:22 DEBUG Password is Entered.
+2024-09-30-09:44:22 INFO  'Login' button is clicked
+2024-09-30-09:44:22 INFO  LeadsTest: defaultViewTC22:Browser instance launched
+2024-09-30-09:44:24 INFO  'Leads' tab is clicked
+2024-09-30-09:44:26 INFO  Clicked on User Menu
+2024-09-30-09:44:28 DEBUG Username is entered.
+2024-09-30-09:44:28 DEBUG Password is Entered.
+2024-09-30-09:44:30 INFO  'Login' button is clicked
+2024-09-30-09:44:30 INFO  Logged in again.
+2024-09-30-09:44:30 INFO  Same as last option selected.
+2024-09-30-09:44:31 DEBUG Username is entered.
+2024-09-30-09:44:31 DEBUG Password is Entered.
+2024-09-30-09:44:31 INFO  'Login' button is clicked
+2024-09-30-09:44:31 INFO  LeadsTest: leadsSelectViewTC21:Browser instance launched
+2024-09-30-09:44:34 INFO  'Leads' tab is clicked
+2024-09-30-09:44:34 INFO  Clicked on User Menu
+2024-09-30-09:44:56 DEBUG Username is entered.
+2024-09-30-09:45:03 DEBUG Username is entered.
+2024-09-30-09:45:04 DEBUG Password is Entered.
+2024-09-30-09:45:05 INFO  'Login' button is clicked
+2024-09-30-09:45:05 INFO  LeadsTest: leadsTabTC20:Browser instance launched
+2024-09-30-09:45:07 INFO  'Leads' tab is clicked
+2024-09-30-09:45:07 INFO  Clicked on User Menu
+2024-09-30-09:45:10 DEBUG Username is entered.
+2024-09-30-09:45:11 DEBUG Password is Entered.
+2024-09-30-09:45:11 INFO  'Login' button is clicked
+2024-09-30-09:45:11 INFO  LeadsTest: newLeadsTC24:Browser instance launched
+2024-09-30-09:45:13 INFO  'Leads' tab is clicked
+2024-09-30-09:45:16 INFO  'New Lead Creation' page is displayed.
+2024-09-30-09:45:16 INFO  'New Lead Creation' page is open
+2024-09-30-09:45:16 INFO  'New Lead Creation' page is displayed.
+2024-09-30-09:45:16 INFO  Last Name is entered.
+2024-09-30-09:45:16 DEBUG Password is Entered.
+2024-09-30-09:45:16 INFO  Company Name is entered.
+2024-09-30-09:45:17 INFO  'Login' button is clicked
+2024-09-30-09:45:17 INFO  Logged in again.
+2024-09-30-09:45:18 INFO  'Save' button is clicked.
+2024-09-30-09:45:18 INFO  Clicked on User Menu
+2024-09-30-09:45:18 INFO  New lead is saved and Lead: ABCD ~ Salesforce - Developer Edition is opened.
+2024-09-30-09:45:18 INFO  Same as last option selected.
+2024-09-30-09:45:19 INFO  Clicked on User Menu
+2024-09-30-09:45:22 DEBUG Username is entered.
+2024-09-30-09:45:23 DEBUG Password is Entered.
+2024-09-30-09:45:23 INFO  'Login' button is clicked
+2024-09-30-09:45:23 INFO  LeadsTest: todaysLeadsTC23:Browser instance launched
+2024-09-30-09:45:27 INFO  'Leads' tab is clicked
+2024-09-30-09:45:29 INFO  Today's Lead page is displayed.
+2024-09-30-09:45:29 INFO  Clicked on User Menu
+2024-09-30-09:45:34 DEBUG Username is entered.
+2024-09-30-09:45:34 DEBUG Username is entered.
+2024-09-30-09:45:35 DEBUG Password is Entered.
+2024-09-30-09:45:35 DEBUG Password is Entered.
+2024-09-30-09:45:36 INFO  'Login' button is clicked
+2024-09-30-09:45:36 INFO  'Login' button is clicked
+2024-09-30-09:45:40 INFO  'Contacts' tab is clicked.
+2024-09-30-09:45:40 INFO  Contacts Home Page is displayed.
+2024-09-30-09:45:44 DEBUG Username is entered.
+2024-09-30-09:45:45 DEBUG Password is Entered.
+2024-09-30-09:45:45 INFO  'Login' button is clicked
+2024-09-30-09:45:48 INFO  'Contacts' tab is clicked.
+2024-09-30-09:45:48 INFO  Contacts Home Page is displayed.
+2024-09-30-09:45:49 INFO  'New' contact button is clicked.
+2024-09-30-09:45:49 INFO  New Contact's Edit Page is displayed.
+2024-09-30-09:45:49 INFO  Last name entered.
+2024-09-30-09:45:51 INFO  Saved new contacts.
+2024-09-30-09:45:52 INFO  New Contact Page is displayed.
+2024-09-30-09:45:59 DEBUG Username is entered.
+2024-09-30-09:46:00 DEBUG Password is Entered.
+2024-09-30-09:46:01 INFO  'Login' button is clicked
+2024-09-30-09:46:03 INFO  'Contacts' tab is clicked.
+2024-09-30-09:46:03 INFO  Contacts Home Page is displayed.
+2024-09-30-09:46:03 INFO  'Create New View' link is clicked.
+2024-09-30-09:46:03 INFO  Create New View Page is displayed.
+2024-09-30-09:46:04 INFO  View Name is entered.
+2024-09-30-09:46:04 INFO  Unique View Name is created.
+2024-09-30-09:46:04 INFO  Cancel 'Create New View'
+2024-09-30-09:46:38 DEBUG Username is entered.
+2024-09-30-09:46:39 DEBUG Password is Entered.
+2024-09-30-09:46:40 INFO  'Login' button is clicked
+2024-09-30-09:46:41 INFO  'Contacts' tab is clicked.
+2024-09-30-09:46:41 INFO  Contacts Home Page is displayed.
+2024-09-30-09:46:43 INFO  'New' contact button is clicked.
+2024-09-30-09:46:43 INFO  New Contact's Edit Page is displayed.
+2024-09-30-09:46:44 INFO  Last name entered.
+2024-09-30-09:46:45 DEBUG Username is entered.
+2024-09-30-09:46:45 DEBUG Password is Entered.
+2024-09-30-09:46:46 INFO  'Login' button is clicked
+2024-09-30-09:46:47 INFO  Saved new contacts.
+2024-09-30-09:46:48 INFO  'Contacts' tab is clicked.
+2024-09-30-09:46:48 INFO  Contacts Home Page is displayed.
+2024-09-30-09:46:50 INFO  'Create New View' link is clicked.
+2024-09-30-09:46:50 INFO  Create New View Page is displayed.
+2024-09-30-09:46:50 INFO  View Name entered.
+2024-09-30-09:46:50 INFO  Unique View Name is generated.
+2024-09-30-09:46:51 INFO  Saving Create New View
+2024-09-30-09:46:51 INFO  Contacts home page is displayed with new view selected.
+2024-09-30-09:46:55 DEBUG Username is entered.
+2024-09-30-09:46:55 DEBUG Password is Entered.
+2024-09-30-09:46:56 INFO  'Login' button is clicked
+2024-09-30-09:46:58 INFO  'Contacts' tab is clicked.
+2024-09-30-09:46:58 INFO  Contacts Home Page is displayed.
+2024-09-30-09:46:58 INFO  'Create New View' link is clicked.
+2024-09-30-09:46:58 INFO  Create New View Page is displayed.
+2024-09-30-09:46:59 INFO  Unique View Name is created.
+2024-09-30-09:47:00 INFO  Saving Create New View
+2024-09-30-09:47:00 INFO  Error message is displayed.
+2024-09-30-09:47:06 DEBUG Username is entered.
+2024-09-30-09:47:06 DEBUG Password is Entered.
+2024-09-30-09:47:07 INFO  'Login' button is clicked
+2024-09-30-09:47:09 INFO  'Contacts' tab is clicked.
+2024-09-30-09:47:09 INFO  Contacts Home Page is displayed.
+2024-09-30-09:47:13 DEBUG Username is entered.
+2024-09-30-09:47:14 DEBUG Password is Entered.
+2024-09-30-09:47:15 INFO  'Login' button is clicked
+2024-09-30-09:47:15 INFO  RandomScenariosTest: blockingAnEventInTheCalanderTC36:Browser instance launched
+2024-09-30-09:47:17 INFO  'Home' tab is clicked.
+2024-09-30-09:47:18 INFO  Date Link is clicked.
+2024-09-30-09:47:19 INFO  8:00 AM Link is clicked.
+2024-09-30-09:47:19 INFO  The 'ComboBox' popup is opened.
+2024-09-30-09:47:19 INFO  Clicked 'Other' option in the popup.
+2024-09-30-09:47:20 INFO  The popup window is closed.
+2024-09-30-09:47:20 INFO  Other is entered in the Subject Field.
+2024-09-30-09:47:21 INFO  9:00 PM is selected in the 'End' field.
+2024-09-30-09:47:22 INFO  No Calender Event
+2024-09-30-09:47:25 DEBUG Username is entered.
+2024-09-30-09:47:26 DEBUG Password is Entered.
+2024-09-30-09:47:27 INFO  'Login' button is clicked
+2024-09-30-09:47:27 INFO  RandomScenariosTest: calenderEventWithRecurranceTC37:Browser instance launched
+2024-09-30-09:47:29 INFO  'Home' tab is clicked.
+2024-09-30-09:47:31 INFO  Date Link is clicked.
+2024-09-30-09:47:32 INFO  4:00 PM Link is clicked.
+2024-09-30-09:47:33 INFO  The 'ComboBox' popup is opened.
+2024-09-30-09:47:33 DEBUG Username is entered.
+2024-09-30-09:47:33 INFO  Clicked 'Other' option in the popup.
+2024-09-30-09:47:33 INFO  The popup window is closed.
+2024-09-30-09:47:33 INFO  Other is entered in the Subject Field.
+2024-09-30-09:47:34 DEBUG Password is Entered.
+2024-09-30-09:47:34 INFO  7:00 PM is selected in the 'End' field.
+2024-09-30-09:47:34 INFO  Recurrence 'checkbox' is selected.
+2024-09-30-09:47:35 INFO  'Login' button is clicked
+2024-09-30-09:47:35 INFO  RandomScenariosTest: tabCustomizationTC35:Browser instance launched
+2024-09-30-09:47:37 INFO  No Calender Event
+2024-09-30-09:47:37 INFO  Clicked on '+'
+2024-09-30-09:47:57 INFO  An error occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//a[@title='Month View']/img"}
+  (Session info: chrome=129.0.6668.58)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.23.1', revision: '656257d8e9'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.7'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6e8a81bf89a62654c3f2db21e4e0db8b, findElement {value=//a[@title='Month View']/img, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.58, chrome: {chromedriverVersion: 129.0.6668.70 (df87d5cf12b1..., userDataDir: C:\Users\Pal\AppData\Local\...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53158}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53158/devtoo..., se:cdpVersion: 129.0.6668.58, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6e8a81bf89a62654c3f2db21e4e0db8b
+2024-09-30-09:47:57 INFO  All tabs page is displayed.
+2024-09-30-09:47:58 INFO  Clicked on 'Customize My Tabs'
+2024-09-30-09:47:58 INFO  Customize My Tabs Page is displayed.
+2024-09-30-09:47:58 INFO  'Reports' is selected from 'Selected Tabs'
+2024-09-30-09:47:58 INFO  'Remove' button is Clicked.
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:58 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is  not avaliable in Available Tabs drop down
+2024-09-30-09:47:59 INFO  Reports is avaliable in Available Tabs drop down
+2024-09-30-09:48:00 INFO  'Save' button is Clicked.
+2024-09-30-09:48:00 INFO  All tabs page is displayed.
+2024-09-30-09:48:00 INFO  Clicked on User Menu
+2024-09-30-09:48:02 DEBUG Username is entered.
+2024-09-30-09:48:02 DEBUG Password is Entered.
+2024-09-30-09:48:02 INFO  'Login' button is clicked
+2024-09-30-09:48:08 DEBUG Username is entered.
+2024-09-30-09:48:08 DEBUG Password is Entered.
+2024-09-30-09:48:09 INFO  'Login' button is clicked
+2024-09-30-09:48:09 INFO  RandomScenariosTest: verifyFirstAndLastNameOfUserTC33:Browser instance launched
+2024-09-30-09:48:12 DEBUG Username is entered.
+2024-09-30-09:48:13 DEBUG Password is Entered.
+2024-09-30-09:48:13 INFO  'Login' button is clicked
+2024-09-30-09:48:13 INFO  RandomScenariosTest: verifyLastNameUpdatedTC34:Browser instance launched
+2024-09-30-09:48:14 INFO  'Home' tab is clicked.
+2024-09-30-09:48:14 INFO  Home Page is displayed.
+2024-09-30-09:48:36 INFO  'Home' tab is clicked.
+2024-09-30-09:48:37 INFO  User Name link is clicked
+2024-09-30-09:48:37 INFO  User: Pallavi Palla ~ Salesforce - Developer Edition is displayed.
+2024-09-30-09:48:37 INFO  Chilcked on the Edit Icon.
+2024-09-30-09:48:38 INFO  'Edit profile' pop up is available.
+2024-09-30-09:48:38 INFO  Current selected tab is 'Contacts'
+2024-09-30-09:48:38 INFO  Clicked on the 'About' tab
+2024-09-30-09:48:38 INFO  First Name field have focus.
+2024-09-30-09:48:38 DEBUG last name is entered.
+2024-09-30-09:48:39 DEBUG Save Changes.
+2024-09-30-09:48:40 DEBUG Last Name Changed Successfully.
+2024-09-30-09:48:40 INFO  Popup is closed.
+2024-09-30-09:48:40 INFO  Last Name is update in breadcrumb.

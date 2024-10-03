@@ -75,7 +75,7 @@ public class CreateAccountTest extends BaseTest {
 			cap.editView(driver);
 			Assert.assertTrue(cap.validateEditAccount(driver));
 			test.get().info("View Page with new view Name in the drop down and last activity column added.");
-//			cap.editViewRemove(driver);
+			cap.editViewRemove(driver);
 		
 	}
 	@Test

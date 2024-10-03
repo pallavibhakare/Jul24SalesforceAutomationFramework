@@ -26,6 +26,7 @@ public class HomeTest extends BaseTest{
 		WebDriver driver = getDriver();	
 		LoginPage lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);
+		hp = new HomePage(driver);
 	}
 	
 	@Test()
@@ -78,7 +79,7 @@ public class HomeTest extends BaseTest{
 		MySettingsPage ms = new MySettingsPage(driver);
 		hp.clickUserMenu(driver);
 		test.get().log(Status.INFO, "Click User menu");
-		Assert.assertTrue(hp.isUserMenuOptionsVisible(), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
+		Assert.assertTrue(hp.isUserMenuOptionsVisible(driver), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
 		test.get().log(Status.INFO, "Drop down with "+hp.getUsermenuOptionNames()+" is displayed.");
 		hp.clickMySettings();
 		Assert.assertTrue(hp.isMySettingsHomePage(driver), "My settings page should be displayed.");
@@ -104,10 +105,9 @@ public class HomeTest extends BaseTest{
 		WebDriver driver = getDriver();
 		logger.info("HomeTest:selectDeveloerConsoleTC08:Browser instance launched");	
 		test.get().log(Status.INFO, "Logged into the Application.");
-		HomePage hp = new HomePage(driver);
 		hp.clickUserMenu(driver);
 		test.get().log(Status.INFO, "Click User menu");
-		Assert.assertTrue(hp.isUserMenuOptionsVisible(), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
+		Assert.assertTrue(hp.isUserMenuOptionsVisible(driver), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
 		test.get().log(Status.INFO, "Drop down with "+hp.getUsermenuOptionNames()+" is displayed.");
 		hp.clickDeveloperConsole();
 		test.get().log(Status.INFO, "Clicked on the Developer Console");
@@ -122,7 +122,7 @@ public class HomeTest extends BaseTest{
 		HomePage hp = new HomePage(driver);
 		hp.clickUserMenu(driver);
 		test.get().log(Status.INFO, "Click User menu");
-		Assert.assertTrue(hp.isUserMenuOptionsVisible(), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
+		Assert.assertTrue(hp.isUserMenuOptionsVisible(driver), "Drop down with"+hp.getUsermenuOptionNames()+" is displayed.");
 		test.get().log(Status.INFO, "Drop down with "+hp.getUsermenuOptionNames()+" is displayed.");
 		hp.clickLogoutLink(driver);
 		test.get().info("Clicked login button");

@@ -3,8 +3,6 @@ package stepdefinitions;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import io.cucumber.datatable.DataTable;
@@ -58,6 +56,27 @@ public class HomeSteps extends BaseTest{
 	 Assert.assertTrue(hp.isUserMenuAvailable());  
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@Given("step1 context")
 	public void step1_context() {
 	    

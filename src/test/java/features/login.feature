@@ -20,9 +20,9 @@
 Feature: Login Feature
   
 Background:
-Given I launched SGDC login page
+Given I launched SFDC login page
 
-  Scenario: Validate valid login    
+   Scenario: Validate valid login    
     When I enter valid username
     And enter valid password
     And clicked login button
@@ -33,6 +33,21 @@ Given I launched SGDC login page
     And enter invalid password
     And clicked login button
     Then I should see Error message
+    
+    Scenario: Check Remember Me    
+    When I enter valid username
+    And enter valid password
+    And I click remember me checkbox
+    And click login button
+    Then I should see Home page
+    And I should logout 
+    And I should see saved username
+    
+   Scenario: Forget password link
+    When I click forget password link
+    And Forget Password page must be dispayed
+    And clicked forget password continue button
+    Then I should see Reset message
 
 
   #Scenario Outline: Login to the app

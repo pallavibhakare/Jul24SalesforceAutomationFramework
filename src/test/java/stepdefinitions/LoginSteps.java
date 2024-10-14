@@ -29,7 +29,7 @@ public class LoginSteps extends BaseTest {
 		driver.close();
 	}
 	
-	@Given("I launched SGDC login page")
+	@Given("I launched SFDC login page")
 	public void i_launched_sgdc_login_page() throws FileNotFoundException, IOException { 
 //		driver = getBrowser("chrome", false);
 	    lp = new LoginPage(driver);
@@ -86,6 +86,49 @@ public class LoginSteps extends BaseTest {
 	public void i_click_on_the_login_button() {
 	   
 	}
+	
+	@When("I click remember me checkbox")
+	public void i_click_remember_me_checkbox() {
+	    lp.clickRememberMe();
+	}
+
+	@When("click login button")
+	public void click_login_button() {
+	    lp.clickLogin();
+	}
+
+	
+	@Then("I should logout")
+	public void i_should_logout() throws FileNotFoundException, IOException {
+	   //hp.clickLogoutLink(driver);
+		hp.logout(driver);
+	}
+
+	@Then("I should see saved username")
+	public void i_should_see_saved_username() {
+	   Assert.assertTrue(lp.isSavedUserName(driver));
+	}
+
+	@When("I click forget password link")
+	public void i_click_forget_password_link() {
+	    lp.forgetPassword(driver);
+	}
+
+	@When("Forget Password page must be dispayed")
+	public void forget_password_page_must_be_dispayed() throws FileNotFoundException, IOException {
+		Assert.assertTrue(lp.isForgetPasswordPage(driver));
+	}
+
+	@When("clicked forget password continue button")
+	public void clicked_forget_password_continue_button() throws FileNotFoundException, IOException {
+	    lp.forgotYourPassword(driver);
+	}
+
+	@Then("I should see Reset message")
+	public void i_should_see_reset_message() throws FileNotFoundException, IOException {
+		Assert.assertTrue(lp.isResetMessagePage(driver));
+	}
+	
 	
 	
 }

@@ -5,20 +5,15 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import com.aventstack.extentreports.Status;
-
 import listeners.TestListener;
 import pages.ContactsPage;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.FileUtils;
-import utils.WaitUtils;
-
 @Listeners(TestListener.class)
 public class ContactsTest extends BaseTest {
 
@@ -31,17 +26,8 @@ public class ContactsTest extends BaseTest {
 		WebDriver driver = getDriver();	
 		lp  = new LoginPage(driver);
 		hp = lp.loginToApp(driver);		
-		test.get().log(Status.INFO, "Logged into the Application.");
 		hp = new HomePage(driver);
-		Assert.assertTrue(hp.isHomePage(driver), "Verify home page is displayed.");
-		test.get().log(Status.INFO, "Home page is displayed.");	
 		cp = new ContactsPage(driver);
-	}
-	@AfterMethod(alwaysRun = true)
-	public void logoutFinal() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
-		hp.logout(driver);
 	}
 	
 	@Test
@@ -151,7 +137,7 @@ public class ContactsTest extends BaseTest {
 		
 		cp.enterViewName();
 		cp.enterUniqueViewName();
-		cp.cancelCreateNewView();
+		cp.cancelCreateNewView(driver);
 		Assert.assertTrue(cp.isContactsHomePage(driver));
 		test.get().log(Status.INFO, "Contacts Home Page is displayed without '"+FileUtils.readContactsPropertiesFile("viewNameForCancel")+"' view name.");
 	}

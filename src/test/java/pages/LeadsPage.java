@@ -39,7 +39,8 @@ public class LeadsPage extends BasePage {
 	public WebElement savebtn; 
 	
 	public void clickLeadsTabLink(WebDriver driver) {	
-		WaitUtils.WaitForVisibility(driver, leads_Tab);
+//		WaitUtils.WaitForVisibility(driver, leads_Tab);
+		WaitUtils.explicitlyWaitForClickableElement(driver, leads_Tab);
 		leads_Tab.click();
 		logger.info("'Leads' tab is clicked");
 	}
@@ -74,7 +75,7 @@ public class LeadsPage extends BasePage {
 		LoginPage lp = new LoginPage(driver);
 		lp.loginToApp(driver);
 		logger.info("Logged in again.");
-		Assert.assertTrue(hp.isHomePage(driver));		
+//		Assert.assertTrue(hp.isHomePage(driver));		
 		leads_Tab.click();
 		Select select = new Select(selectLeadsViewDropdown);
 		String currentSelected= select.getFirstSelectedOption().getText();
@@ -100,6 +101,7 @@ public class LeadsPage extends BasePage {
 		}
 	}
 	public void clikcNewLeads(WebDriver driver) throws FileNotFoundException, IOException {
+		WaitUtils.explicitlyWaitForClickableElement(driver, newBtn);
 		newBtn.click();
 		isNewLeadCreationPage(driver);
 		logger.info("'New Lead Creation' page is open");

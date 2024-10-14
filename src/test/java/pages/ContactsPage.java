@@ -85,9 +85,11 @@ public class ContactsPage extends BasePage {
 	}
 	public boolean isContactsHomePage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isContactsHomePage = false;
-//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
+		System.out.println("Actual Contact Home title:"+actual);
 		String expected = FileUtils.readContactsPropertiesFile("contactsHomePageTitle");
+		System.out.println("Expected Contact Home title:"+expected);
 		if(actual.equals(expected)) {
 			isContactsHomePage = true;
 			logger.info("Contacts Home Page is displayed.");
@@ -147,6 +149,9 @@ public class ContactsPage extends BasePage {
 		return isNewContactPage;
 	}
 	public boolean clickCreateNewViewLink(WebDriver driver) throws FileNotFoundException, IOException {
+		
+//		WaitUtils.WaitForVisibility(driver, createNewViewLink);
+		WaitUtils.explicitlyWaitForClickableElement(driver, createNewViewLink);
 		createNewViewLink.click();
 		logger.info("'Create New View' link is clicked.");
 		boolean isCreateNewViewPage=false;
@@ -191,7 +196,8 @@ public class ContactsPage extends BasePage {
 		logger.info("Saving Create New View");
 	}
 	
-	public void cancelCreateNewView() throws FileNotFoundException, IOException {
+	public void cancelCreateNewView(WebDriver driver) throws FileNotFoundException, IOException {
+		WaitUtils.explicitlyWaitForClickableElement(driver, cancelViewBtn);
 		cancelViewBtn.click();
 		logger.info("Cancel 'Create New View'");
 	}
@@ -213,10 +219,11 @@ public class ContactsPage extends BasePage {
 	public boolean saveDetails(WebDriver driver) throws FileNotFoundException, IOException {
 		saveViewBtn.click();
 		logger.info("Saving Create New View");
-//		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
+		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
 		String actual = driver.getTitle();
 		String expected = FileUtils.readContactsPropertiesFile("contactsPage");
-		
+		System.out.println("actual: New view title:"+actual);
+		System.out.println("expected New view title:"+expected);
 		boolean isViewSaved= false;
 		if(actual.equals(expected)) {
 			isViewSaved=true;
@@ -348,7 +355,7 @@ public class ContactsPage extends BasePage {
 		return isNewContactPage;
 	}
 	public void deleteRecord(WebDriver driver) {
-//			WaitUtils.WaitForVisibility(driver, deleteBtn);
+
 			deleteBtn.click();
 			driver.switchTo().alert().accept();
 		

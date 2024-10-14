@@ -1,0 +1,13 @@
+2024-10-03-21:38:48 DEBUG Username is entered.
+2024-10-03-21:38:49 DEBUG Password is Entered.
+2024-10-03-21:38:50 INFO  'Login' button is clicked
+2024-10-03-21:39:01 DEBUG Wrong username is entered.
+2024-10-03-21:39:01 DEBUG Wrong Password is Entered.
+2024-10-03-21:39:02 INFO  'Login' button is clicked
+2024-10-03-21:39:07 DEBUG Username is entered.
+2024-10-03-21:39:08 DEBUG Password is Entered.
+2024-10-03-21:39:08 INFO  Checked Remember Me checkbox.
+2024-10-03-21:39:08 INFO  'Login' button is clicked
+2024-10-03-21:39:17 INFO  'Forget Password' link is cliked.
+2024-10-03-21:39:18 INFO  'Continue' button is cliked.
+2024-10-03-21:39:18 INFO   Password reset link is sent.

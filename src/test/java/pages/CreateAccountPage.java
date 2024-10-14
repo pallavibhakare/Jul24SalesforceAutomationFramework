@@ -31,6 +31,9 @@ public class CreateAccountPage extends BasePage{
 	@FindBy(xpath = "//a[contains(text(), 'Edit')]")
 	public WebElement edit;
 	
+	@FindBy(xpath = "//div[@class='filterLinks']/a[contains(text(), 'Edit')]")
+	public WebElement filterLinksEdit;
+	
 	@FindBy(id = "fname")
 	public WebElement viewName;
 	
@@ -197,7 +200,8 @@ public class CreateAccountPage extends BasePage{
 	} 
 	public boolean isNewViewAddedInDropdown(WebDriver driver, String name) throws FileNotFoundException, IOException {
 		boolean isNewViewAddedToAccountViewList = false;
-		WaitUtils.WaitForVisibility(driver, viewDropDown);
+		WaitUtils.explicitlyWaitForClickableElement(driver, viewDropDown);
+		viewDropDown.click();		
 		Select select = new Select(viewDropDown);
 		WebElement selectedOption = select.getFirstSelectedOption();
 		String selectedText = selectedOption.getText();
@@ -212,9 +216,11 @@ public class CreateAccountPage extends BasePage{
 		return isNewViewAddedToAccountViewList;
 	}
 	public void selectViewName(WebDriver driver) {
-		Select dropdown = new Select(viewDropDown);
-		dropdown.selectByIndex(3);
-		edit.click();
+//		Select dropdown = new Select(viewDropDown);
+////		dropdown.selectByIndex(3);
+//		dropdown.getFirstSelectedOption();
+//		WaitUtils.explicitlyWaitForClickableElement(driver, filterLinksEdit);
+		filterLinksEdit.click();
 	} 
 	public boolean isEditViewPage(WebDriver driver) throws FileNotFoundException, IOException {
 		boolean isEditView =false;
@@ -252,9 +258,10 @@ public class CreateAccountPage extends BasePage{
 		saveViewBtn.click();		
 	}
 	public void editViewRemove(WebDriver driver) throws FileNotFoundException, IOException {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    wait.until(ExpectedConditions.elementToBeClickable(edit));
-		edit.click();
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//	    wait.until(ExpectedConditions.elementToBeClickable(edit));
+//		WaitUtils.explicitlyWaitForClickableElement(driver, edit);
+		filterLinksEdit.click();
 		selectedFields.click();
 		Select selected =  new Select(selectedFields);
 		selected.selectByVisibleText("Last Activity");

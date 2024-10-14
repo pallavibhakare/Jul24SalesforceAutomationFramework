@@ -37,12 +37,7 @@ public class RandomScenariosTest extends BaseTest {
 		rp=new RandomScenariosPage(driver);
 		mpp=new MyProfilePage(driver);
 	}
-	@AfterMethod(alwaysRun = true)
-	public void logoutFinal() throws FileNotFoundException, IOException {
-		WebDriver driver = getDriver();
-		WaitUtils.waitForTitleToBe(driver, driver.getTitle());
-		hp.logout(driver);
-	}
+	
 	@Test
 	public void verifyFirstAndLastNameOfUserTC33() throws FileNotFoundException, IOException {
 		WebDriver driver = getDriver();	
@@ -123,9 +118,9 @@ public class RandomScenariosTest extends BaseTest {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(driver!=null) {
+//			if(driver!=null) {
 				rp.addOptionBack(driver,optionRemoved);
-			}
+//			}
 		}
 	}
 	@Test
